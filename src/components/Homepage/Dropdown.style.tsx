@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const StepsMobileDropdownWrapperStyled = styled.div`
-  border: 2px solid rgb(var(--main-orange));
+  border: 2px solid rgb(var(--main-yellow));
   border-radius: 6px;
   padding: 8px;
   overflow: hidden;
@@ -34,6 +34,6 @@ export const StepsMobileDropdownContentWrapperStyled = styled.div<{ $open: Boole
   padding-block: ${({ $open }) => $open ? '12px' : '0px'};
   margin-top: ${({ $open }) => $open ? '8px' : '0px'};
   transition: height .6s ease, clip-path .6s ease, padding .6s ease, margin-top .6s ease;
-  border-top: 1px inset rgb(var(--main-orange));
+  border-top: 1px inset rgb(var(--main-yellow));
   padding-inline: 12px;
 `

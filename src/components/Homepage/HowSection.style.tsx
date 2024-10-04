@@ -34,7 +34,7 @@ export const HowLineStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgb(var(--main-orange));
+  background-color: rgb(var(--main-yellow));
   height: 40px;
   z-index: 1;
 `

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import darkModeReducer from "./slices/darkModeSlice";
+import inquiryCartReducer from "./slices/inquiryCartSlice";
 
 const store = configureStore({
   reducer: {
     darkMode: darkModeReducer,
+    inquiryCart: inquiryCartReducer,
   },
 });
 

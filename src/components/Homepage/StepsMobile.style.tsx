@@ -7,7 +7,7 @@ export const StepsMobileWrapperStyled = styled.section`
 
   button {
     margin-top: 10vh;
-    background-color: rgb(var(--main-orange));
+    background-color: rgb(var(--main-yellow));
     color: var(--dark-color);
     border: unset;
     padding: 16px 48px;

@@ -42,7 +42,7 @@ export const StepsTitleStyled = styled.li<{ $selected: Boolean }>`
     left: -32px;
     right: 0;
     height: 4px;
-    background-color: rgb(var(--main-orange));
+    background-color: rgb(var(--main-yellow));
     transition: left .2s ease, opacity .2s ease;
   }
 
@@ -103,7 +103,7 @@ export const StepsDescriptionWrapperStyled = styled.div`
     position: absolute;
     right: 0;
     top: calc(100% + 2rem);
-    background-color: rgb(var(--main-orange));
+    background-color: rgb(var(--main-yellow));
     color: var(--dark-color);
     border: unset;
     padding: 8px 48px;

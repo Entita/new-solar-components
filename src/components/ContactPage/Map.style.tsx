@@ -6,7 +6,7 @@ export const MapWrapperStyled = styled.div`
   }
 
   .RIFJN-maps-pin-view-border, .RIFvHW-maps-pin-view-background {
-    fill: rgb(var(--main-orange));
+    fill: rgb(var(--main-yellow));
   }
 
   .KWCFZI-maps-pin-view-default-glyph {
@@ -87,11 +87,11 @@ export const MapChangeTypeWrapperStyled = styled.div<{ $type: 'storage' | 'compa
   cursor: pointer;
 
   & > span:nth-child(1) {
-    color: ${({ $type }) => $type === 'company' && 'rgb(var(--main-orange))'};
+    color: ${({ $type }) => $type === 'company' && 'rgb(var(--main-yellow))'};
   }
 
   & > span:nth-child(2) {
-    color: ${({ $type }) => $type === 'storage' && 'rgb(var(--main-orange))'};
+    color: ${({ $type }) => $type === 'storage' && 'rgb(var(--main-yellow))'};
   }
 
   &::before {

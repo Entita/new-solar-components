@@ -1,8 +1,5 @@
+import { DarkModeState } from "@/types/DarkMode";
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface DarkModeState {
-  value: 'dark' | 'light' | null;
-}
 
 const initialState: DarkModeState = {
   value: null,

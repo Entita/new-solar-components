@@ -42,7 +42,7 @@ export const MapFormFieldWrapperStyled = styled.div`
   span > i {
     padding-left: 4px;
     font-style: normal;
-    color: rgb(var(--main-orange));
+    color: rgb(var(--main-yellow));
   }
 
   input, textarea {

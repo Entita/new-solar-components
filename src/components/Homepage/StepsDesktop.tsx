@@ -56,7 +56,7 @@ export default function StepsDesktop() {
   return (
     <StepsSectionWrapperStyled ref={containerRef}>
       <svg>
-        <line x1={lineCoords.leftX} y1={lineCoords.leftY} x2={lineCoords.rightX} y2={lineCoords.rightY} style={{ stroke: 'rgb(var(--main-orange))', strokeWidth: 2 }} />
+        <line x1={lineCoords.leftX} y1={lineCoords.leftY} x2={lineCoords.rightX} y2={lineCoords.rightY} style={{ stroke: 'rgb(var(--main-yellow))', strokeWidth: 2 }} />
       </svg>
       <StepsTitleWrapperStyled>
         {allSteps.map((thisStep: { title: string, description: string }, index: number) => (

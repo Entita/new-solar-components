@@ -30,7 +30,7 @@ export const HeaderMobileButtonStyled = styled.div<{ $open: Boolean }>`
   right: 0;
   height: 4px;
   border-radius: 4px;
-  background-color: ${({ $open }) => $open ? 'transparent' : 'rgb(var(--main-orange))'};
+  background-color: ${({ $open }) => $open ? 'transparent' : 'rgb(var(--main-yellow))'};
   transform: ${({ $open }) => $open ? 'rotate(360deg)' : 'rotate(0deg)'};
   transition: background-color .6s ease, transform .6s ease;
 
@@ -41,7 +41,7 @@ export const HeaderMobileButtonStyled = styled.div<{ $open: Boolean }>`
     left: 0;
     height: 4px;
     border-radius: 4px;
-    background-color: ${({ $open }) => $open ? 'var(--dark-color)' : 'rgb(var(--main-orange))'};
+    background-color: ${({ $open }) => $open ? 'var(--dark-color)' : 'rgb(var(--main-yellow))'};
     transform-origin: left;
     transition: background-color .6s ease, transform .6s ease, right .6s ease;
     right: ${({ $open }) => $open ? '-10px' : '0'};
@@ -55,7 +55,7 @@ export const HeaderMobileButtonStyled = styled.div<{ $open: Boolean }>`
     left: 0;
     height: 4px;
     border-radius: 4px;
-    background-color: ${({ $open }) => $open ? 'var(--dark-color)' : 'rgb(var(--main-orange))'};
+    background-color: ${({ $open }) => $open ? 'var(--dark-color)' : 'rgb(var(--main-yellow))'};
     transform-origin: left;
     transition: background-color .6s ease, transform .6s ease, right .6s ease;
     right: ${({ $open }) => $open ? '-10px' : '0'};
@@ -68,7 +68,7 @@ export const HeaderMobileBackgroundStyled = styled.div<{ $open: Boolean }>`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(var(--main-orange));
+  background-color: rgb(var(--main-yellow));
   width: ${({ $open }) => $open ? '300vw' : '0'};
   height: ${({ $open }) => $open ? '250vh' : '0'};
   transition: width .6s ease, height .6s ease;
@@ -120,5 +120,9 @@ export const HeaderMobileContentWrapperStyled = styled.div<{ $open: Boolean }>`
       bottom: 0;
       opacity: 1;
     }
+  }
+
+  span:not(${HeaderTextStyled}) {
+    font-weight: 300;
   }
 `

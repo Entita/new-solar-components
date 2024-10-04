@@ -5,6 +5,59 @@ export const HeaderTextStyled = styled.span<{ $current: Boolean }>`
   font-weight: ${({ $current }) => $current ? '400' : '300'};
 `
 
+export const HeaderInquiryNumberStyled = styled.span<{ $show: Boolean }>`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: ${({ $show }) => $show ? '-10px' : '0'};
+  top: ${({ $show }) => $show ? '-10px' : '0'};
+  opacity: ${({ $show }) => $show ? 1 : 0};
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  border-radius: 50%;
+  background-color: rgb(var(--main-orange));
+  transition: left .2s ease, top .2s ease, opacity .2s ease;
+  color: var(--white-color);
+  z-index: 1;
+`
+
+export const InquiryWrapperStyled = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  column-gap: 24px;
+
+  div:nth-child(2) {
+    position: relative;
+    padding: 4px 20px;
+    border-radius: 4px;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-color: rgb(var(--foreground));
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      transform: scale(0);
+      transition: transform .2s ease;
+      z-index: -1;
+    }
+
+    &:hover {
+      &::before {
+        transform: scale(1);
+      }
+    }
+  }
+`
+
 export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
   position: fixed;
   display: flex;
@@ -28,7 +81,7 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
     right: 0;
     top: ${({ $isOnTop }) => $isOnTop ? '-100%' : '0'};
     height: calc(7.5vh + 60px);
-    background-color: rgba(var(--main-orange), .75);
+    background-color: rgba(var(--main-yellow), .75);
     backdrop-filter: blur(5px);
     transition: top .2s ease;
     z-index: -1;
@@ -66,7 +119,7 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
   }
 
   a:first-child {
-    background-color: ${({ $isOnTop }) => $isOnTop ? 'rgba(var(--foreground), .3)' : 'rgba(var(--foreground), .2)'};
+    background-color: ${({ $isOnTop }) => $isOnTop ? 'rgba(var(--foreground), .3)' : 'rgba(var(--background), .9)'};
     transition: background-color .2s ease;
   }
 
@@ -79,5 +132,14 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
     right: unset;
     border-color: ${({ $isOnTop }) => $isOnTop ? 'rgb(var(--background))' : 'unset'};
     color: rgb(var(--foreground));
+  }
+
+  ${InquiryWrapperStyled} > div:nth-child(2) {
+    border: ${({ $isOnTop }) => $isOnTop ? '1px solid rgb(var(--foreground))' : '1px solid var(--dark-color)'};
+    color: ${({ $isOnTop }) => $isOnTop ? 'rgb(var(--foreground))' : 'var(--dark-color)'};
+
+    &:hover {
+      color: rgb(var(--background));
+    }
   }
 `

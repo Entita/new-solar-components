@@ -1,5 +1,5 @@
+import { DarkModeState } from '@/types/DarkMode'
 import styled from 'styled-components'
-import { DarkModeState } from '@/lib/slices/darkModeSlice'
 
 export const DarkModeToggleWrapperStyled = styled.div<{ $mode: DarkModeState['value'] }>`
   position: fixed;

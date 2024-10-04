@@ -18,13 +18,13 @@ export const LandingSectionWrapperStyled = styled.section`
   }
 
   button {
-    background-color: rgb(var(--main-orange));
+    background-color: rgb(var(--main-yellow));
     color: var(--dark-color);
     border: unset;
     padding: max(.6vw, 8px) max(4vw, 48px);
     font-size: clamp(18px, 1vw, 24px);
     border-radius: 4px;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     margin-block: 2rem;
     width: fit-content;

@@ -3,7 +3,8 @@
   --foreground: 23, 23, 23;
   --dark-color: #171717;
   --white-color: #FFFFFF;
-  --main-orange: 246, 208, 71;
+  --main-orange: 246, 176, 71;
+  --main-yellow: 246, 208, 71;
 }
 
 html, body {

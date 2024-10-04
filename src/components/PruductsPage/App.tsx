@@ -3,6 +3,8 @@ import React from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import { AppWrapperStyled } from '../Homepage/App.style'
+import ProductsTitle from './ProductsTitle'
+import Products from './Products'
 
 export default function App() {
   const [loading, setLoading] = React.useState<Boolean>(true)
@@ -14,6 +16,8 @@ export default function App() {
   return (
     <AppWrapperStyled>
       <Header />
+      <ProductsTitle />
+      <Products />
       <Footer />
     </AppWrapperStyled>
   )

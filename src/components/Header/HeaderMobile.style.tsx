@@ -95,8 +95,10 @@ export const HeaderMobileContentWrapperStyled = styled.div<{ $open: Boolean }>`
 
   a:first-child {
     display: flex;
-    position: relative;
-    left: -24px;
+    background-color: rgba(var(--background), .95);
+    width: fit-content;
+    padding: 12px;
+    border-radius: 16px;
   }
 
   a:not(:first-child) {

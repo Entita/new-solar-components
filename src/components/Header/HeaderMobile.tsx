@@ -18,7 +18,7 @@ export default function HeaderMobile() {
         </HeaderMobileButtonRelativeWrapperStyled>
       </HeaderMobileButtonWrapperStyled>
       <HeaderMobileContentWrapperStyled $open={open}>
-        <Link href='/'><Logo height={128} /></Link>
+        <Link href='/'><Logo height={128} mobile={true} type='light' /></Link>
         <Link href='/produkty'><HeaderTextStyled $current={pathname === '/produkty'}>Produkty</HeaderTextStyled></Link>
         <Link href='/kontakt'><HeaderTextStyled $current={pathname === '/kontakt'}>Kontakt</HeaderTextStyled></Link>
         <div>

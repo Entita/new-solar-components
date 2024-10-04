@@ -1,10 +1,10 @@
-export default function Logo({ height = 60, type = 'dark' }: { height?: number, color?: string, type?: 'dark' | 'light' }) {
+export default function Logo({ height = 60, mobile = false, type = 'dark' }: { height?: number, mobile?: Boolean, color?: string, type?: 'dark' | 'light' }) {
   const newHeight = type === 'light' ? height - 26 : height
   const width = newHeight / 1.290909090909091
 
   return (
     <>
-      {type === 'dark'
+      {type === 'dark' && !mobile
         ? <DarkLogo width={width} height={newHeight} />
         : <LightLogo width={width} height={newHeight} />}
     </>

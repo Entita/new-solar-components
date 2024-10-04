@@ -35,26 +35,8 @@ export const InquiryWrapperStyled = styled.div`
     padding: 4px 20px;
     border-radius: 4px;
     transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    background-color: rgb(var(--background));
     cursor: pointer;
-
-    &::before {
-      position: absolute;
-      content: '';
-      background-color: rgb(var(--foreground));
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      transform: scale(0);
-      transition: transform .2s ease;
-      z-index: -1;
-    }
-
-    &:hover {
-      &::before {
-        transform: scale(1);
-      }
-    }
   }
 `
 
@@ -136,10 +118,6 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
 
   ${InquiryWrapperStyled} > div:nth-child(2) {
     border: ${({ $isOnTop }) => $isOnTop ? '1px solid rgb(var(--foreground))' : '1px solid var(--dark-color)'};
-    color: ${({ $isOnTop }) => $isOnTop ? 'rgb(var(--foreground))' : 'var(--dark-color)'};
-
-    &:hover {
-      color: rgb(var(--background));
-    }
+    color: rgb(var(--foreground))
   }
 `

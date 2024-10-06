@@ -50,7 +50,7 @@ export default function Product({ product }: { product: any }) {
             <span>2D</span>
             <span>3D</span>
           </ProductDimensionalButtonWrapperStyled>
-          <ProductPriceStyled>{getPriceRangeFromProduct(product)}</ProductPriceStyled>
+          <ProductPriceStyled>{product.variants.length === 1 ? `${product.variants[variant].price} Kč` : getPriceRangeFromProduct(product)}</ProductPriceStyled>
         </ProductImageWrapperStyled>
         <ProductDescriptionWrapperStyled>
           <h1>{product.variants[variant].name}</h1>
@@ -69,7 +69,8 @@ export default function Product({ product }: { product: any }) {
         </ProductDescriptionWrapperStyled>
       </ProductTopWrapperStyled>
       <ProductBottomWrapperStyled>
-        <ProductVariantsWrapperStyled>
+        {product.variants.length > 1 ? (
+          <ProductVariantsWrapperStyled>
           <h3>Varianty produktu:</h3>
           <div>
             {product.variants.map((productVariant: any, variantIndex: number) => (
@@ -83,6 +84,7 @@ export default function Product({ product }: { product: any }) {
             ))}
           </div>
         </ProductVariantsWrapperStyled>
+        ) : <div></div>}
         <ProductControlsWrapperStyled>
           {cartProduct?.variants[variant].amount > 0 ? (
             <ProductAmountWrapperStyled>

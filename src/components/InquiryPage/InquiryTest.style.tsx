@@ -15,7 +15,7 @@ export const InquiryTextStyled = styled.div`
     font-weight: 300;
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 900px) {
     max-width: 100%;
   }
 `

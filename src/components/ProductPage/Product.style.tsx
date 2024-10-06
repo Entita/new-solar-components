@@ -58,9 +58,13 @@ export const ProductDescriptionWrapperStyled = styled.div`
 `
 
 export const ProductAtributeWrapperStyled = styled.div`
+  h3 {
+    font-size: clamp(24px, 1.4vw, 32px);
+  }
+
  ul {
    font-size: clamp(18px, 1.2vw, 24px);
-  padding-inline-start: 30px;
+    padding-inline-start: 30px;
  }
 `
 
@@ -150,6 +154,7 @@ export const ProductAmountWrapperStyled = styled.div`
   font-size: 22px;
   color: rgb(var(--background));
   min-height: 64px;
+  user-select: none;
 
   &:not(:has(button)) {
     cursor: pointer;

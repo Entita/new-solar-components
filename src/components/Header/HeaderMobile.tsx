@@ -21,9 +21,7 @@ export default function HeaderMobile() {
         <Link href='/'><Logo height={128} mobile={true} type='light' /></Link>
         <Link href='/produkty'><HeaderTextStyled $current={pathname === '/produkty'}>Produkty</HeaderTextStyled></Link>
         <Link href='/kontakt'><HeaderTextStyled $current={pathname === '/kontakt'}>Kontakt</HeaderTextStyled></Link>
-        <div>
-          <span>Vaše poptávka</span>
-        </div>
+        <Link href='/poptavka'><HeaderTextStyled $current={pathname === '/poptavka'}>Vaše poptávka</HeaderTextStyled></Link>
         <DarkModeToggle />
       </HeaderMobileContentWrapperStyled>
     </HeaderMobileWrapperStyled>

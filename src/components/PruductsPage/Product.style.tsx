@@ -50,13 +50,19 @@ export const ProductAddStyled = styled.div`
   }
 `
 
-export const ProductInfoStyled = styled.button`
+export const ProductInfoStyled = styled.div`
   border: 2px solid rgb(var(--foreground));
   background-color: rgb(var(--background));
   color: rgb(var(--foreground));
   border-radius: 12px;
-  padding: 12px 20px;
   max-width: 100%;
+
+  a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 12px 20px;
+  }
 
   &:hover {
     background-color: rgb(var(--main-orange));
@@ -85,7 +91,7 @@ export const ProductVariantsStyled = styled(ProductPriceStyled)`
 
 export const ProductVariantsWrapperStyled = styled.div<{ $open: Boolean }>`
   display: flex;
-  clip-path: ${({ $open }) => $open ? 'inset(0 0 0 0);' : 'inset(100% 0 0 0);'};
+  clip-path: ${({ $open }) => $open ? 'inset(-12px -12px -12px -12px)' : 'inset(calc(100% + 12px) -12px -12px -12px)'};
   overflow: visible;
   flex-direction: column;
   position: absolute;
@@ -93,8 +99,7 @@ export const ProductVariantsWrapperStyled = styled.div<{ $open: Boolean }>`
   bottom: -1px;
   left: -1px;
   right: -1px;
-  border: 1px solid rgba(var(--foreground), .15);
-  box-shadow: inset 0px 0px 4px 0px rgba(var(--foreground), .1);
+  box-shadow: -2px 2px 10px 0px rgba(var(--foreground), .15);
   transition: clip-path .2s ease;
   background-color: rgb(var(--background));
   padding: min(20px,2vw) min(20px,4vw);
@@ -114,6 +119,7 @@ export const ProductVariantWrapperStyled = styled.div<{ $selected: Boolean }>`
   transition: background-color .2s ease, color .2s ease;
   padding: 4px 8px;
   border-radius: 6px;
+  user-select: none;
   cursor: pointer;
 
   &:hover {

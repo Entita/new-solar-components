@@ -14,18 +14,18 @@ export const MapFormWrapperStyled = styled.div`
   pointer-events: all;
   overflow: hidden;
 
-  & > div:nth-child(1) {
-    display: flex;
-    justify-content: space-between;
-    column-gap: 3rem;
-
-    & > div {
-      width: calc(50% - 1.5rem);
-    }
-  }
-
   @media (max-width: 500px) {
     margin-left: unset;
+  }
+`
+
+export const MapFormNameFieldWrapperStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  column-gap: 3rem;
+
+  & > div {
+    width: calc(50% - 1.5rem);
   }
 `
 

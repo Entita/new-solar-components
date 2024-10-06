@@ -4,8 +4,11 @@ import Info from '../SVG\'s/Info'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks'
 import { InquiryCartState } from '@/types/InquiryCart'
 import { addProduct, editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
+import Link from 'next/link'
 
-const getPriceRangeFromProduct = (product: any) => {
+export const maxRestrictionAmount = 9999
+
+export const getPriceRangeFromProduct = (product: any) => {
   const prices = [...product.variants.map((variant: any) => variant.price)]
   const min = Math.min(...prices)
   const max = Math.max(...prices)
@@ -17,7 +20,6 @@ export default function Product({ product }: { product: any } ) {
   const [variant, setVariant] = React.useState<number>(0)
   const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: any) => cartProduct.id === product.id), [inquiryCart, product])
   const isProductInCart = React.useMemo(() => !!cartProduct, [cartProduct])
-  const maxRestrictionAmount = React.useMemo(() => 9999, [])
 
   const dispatch = useAppDispatch()
 
@@ -83,19 +85,21 @@ export default function Product({ product }: { product: any } ) {
               ) : (
                 <>
                 <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount - 1)}>-</button>
-                <input onChange={({ target }) => handleAmountInput(target.value)} value={cartProduct.variants[variant].amount} min={1} max={9999} />
+                <input onChange={({ target }) => handleAmountInput(target.value)} value={cartProduct.variants[variant].amount} min={0} max={maxRestrictionAmount} />
                 <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount + 1)}>+</button>
               </>
               )}
             </ProductAddStyled>
             <ProductInfoStyled>
-              <Info />
+              <Link href={`/produkty/${product.id}`}>
+                <Info />
+              </Link>
             </ProductInfoStyled>
           </ProductBottomButtonsWrapperStyled>
         </ProductButtonsWrapperStyled>
       </ProductBgStyled>
       <h3>{product.variants[variant].name}</h3>
-      <p>Slouží k upevnění solárního panelu na hlinikový montážní profil.</p>
+      <p>{product.description}</p>
     </ProductWrapperStyled>
   )
 }

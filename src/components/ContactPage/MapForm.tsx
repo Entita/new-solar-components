@@ -1,7 +1,7 @@
 import React from 'react'
-import { MapFormFieldWrapperStyled, MapFormSendWrapperStyled, MapFormWrapperStyled } from './MapForm.style'
+import { MapFormFieldWrapperStyled, MapFormNameFieldWrapperStyled, MapFormSendWrapperStyled, MapFormWrapperStyled } from './MapForm.style'
 
-export default function MapForm() {
+export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const nameRef = React.useRef<HTMLInputElement | null>(null)
   const surnameRef = React.useRef<HTMLInputElement | null>(null)
   const emailRef = React.useRef<HTMLInputElement | null>(null)
@@ -10,7 +10,8 @@ export default function MapForm() {
 
   return (
     <MapFormWrapperStyled>
-      <div>
+      {inquiry && <h2>Formulář k poptávce</h2>}
+      <MapFormNameFieldWrapperStyled>
         <MapFormFieldWrapperStyled>
           <span>Jméno<i>*</i></span>
           <input ref={nameRef} placeholder='Jméno' />
@@ -19,7 +20,7 @@ export default function MapForm() {
           <span>Příjmení<i>*</i></span>
           <input ref={surnameRef} placeholder='Příjmení' />
         </MapFormFieldWrapperStyled>
-      </div>
+      </MapFormNameFieldWrapperStyled>
       <MapFormFieldWrapperStyled>
         <span>Email<i>*</i></span>
         <input ref={emailRef} placeholder='vase@spolecnost.cz' />
@@ -37,7 +38,7 @@ export default function MapForm() {
           <input id='agreement' type='checkbox' />
           <label htmlFor='agreement'>Odesláním tohoto  formuláře <u>souhlasím s podmínkami</u> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
         </div>
-        <button>Odeslat</button>
+        <button>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
       </MapFormSendWrapperStyled>
     </MapFormWrapperStyled>
   )

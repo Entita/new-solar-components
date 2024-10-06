@@ -1,43 +1,10 @@
 import styled from "styled-components"
 import { DarkModeToggleWrapperStyled } from "../DarkMode/DarkModeToggle.style"
+import { InquiryStyled, InquiryWrapperStyled } from "./Inquiry.style"
+import { HeaderBackToProductsWrapperStyled } from "./BackToProducts.style"
 
 export const HeaderTextStyled = styled.span<{ $current: Boolean }>`
   font-weight: ${({ $current }) => $current ? '400' : '300'};
-`
-
-export const HeaderInquiryNumberStyled = styled.span<{ $show: Boolean }>`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: ${({ $show }) => $show ? '-10px' : '0'};
-  top: ${({ $show }) => $show ? '-10px' : '0'};
-  opacity: ${({ $show }) => $show ? 1 : 0};
-  width: 20px;
-  height: 20px;
-  font-size: 14px;
-  border-radius: 50%;
-  background-color: rgb(var(--main-orange));
-  transition: left .2s ease, top .2s ease, opacity .2s ease;
-  color: var(--white-color);
-  z-index: 1;
-`
-
-export const InquiryWrapperStyled = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-  column-gap: 24px;
-
-  div:nth-child(2) {
-    position: relative;
-    padding: 4px 20px;
-    border-radius: 4px;
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
-    background-color: rgb(var(--background));
-    cursor: pointer;
-  }
 `
 
 export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
@@ -116,8 +83,20 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
     color: rgb(var(--foreground));
   }
 
-  ${InquiryWrapperStyled} > div:nth-child(2) {
-    border: ${({ $isOnTop }) => $isOnTop ? '1px solid rgb(var(--foreground))' : '1px solid var(--dark-color)'};
-    color: rgb(var(--foreground))
+  &:has(${InquiryWrapperStyled}):has(${HeaderBackToProductsWrapperStyled}) {
+    ${InquiryWrapperStyled} {
+      margin-left: unset;
+    }
+
+    ${HeaderBackToProductsWrapperStyled} ${DarkModeToggleWrapperStyled} {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      ${InquiryStyled}, ${HeaderBackToProductsWrapperStyled} a {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+    }
   }
 `

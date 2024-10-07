@@ -20,7 +20,7 @@ export const ProductBgStyled = styled.div<{ $url: string }>`
   width: calc(100% + 2rem);
   aspect-ratio: 1/1;
   margin: -1rem;
-  background-image: ${({ $url }) => `url(${$url})`};
+  background-image: ${({ $url }) => `url(/${$url})`};
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

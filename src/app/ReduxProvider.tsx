@@ -2,8 +2,10 @@
 
 import { Provider } from "react-redux";
 import { ReactNode } from "react";
-import store from "@/lib/store";
+import { store } from "@/lib/store";
+import { persistStore } from "redux-persist";
 
+persistStore(store)
 export default function ReduxProvider({ children }: { children: ReactNode }) {
   return <Provider store={store}>{children}</Provider>;
 }

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import { toggleDarkMode } from '@/lib/slices/darkModeSlice';
 
 export default function DarkModeToggle() {
+  const [initial, setInitial] = React.useState<Boolean>(true)
   const mode = useAppSelector(state => state.darkMode.value)
 
   const dispatch = useAppDispatch()
@@ -16,7 +17,11 @@ export default function DarkModeToggle() {
 
   React.useEffect(() => {
     const darkModeMedia = window.matchMedia('(prefers-color-scheme: dark)')
-    if (mode === null) toggleDarkModeApp(darkModeMedia.matches ? 'dark' : 'light')
+    if (mode === null || initial) {
+      if (mode) toggleDarkModeApp(mode)
+      else toggleDarkModeApp(darkModeMedia.matches ? 'dark' : 'light')
+      setInitial(false)
+    }
 
     darkModeMedia.addEventListener('change', e => toggleDarkModeApp(e.matches ? 'dark' : 'light'));
     return () => darkModeMedia.removeEventListener('change', () => {})

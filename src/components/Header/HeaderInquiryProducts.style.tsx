@@ -15,6 +15,12 @@ export const InquiryProductWrapperStyled = styled.div`
   }
 
   & > div:first-child {
+    a {
+      background-color: transparent;
+      height: max-content;
+      user-select: none;
+    }
+
     span {
       font-weight: 700;
       font-size: 18px;

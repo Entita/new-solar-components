@@ -27,11 +27,13 @@ export const ProductBottomWrapperStyled = styled(ProductTopWrapperStyled)`
 `
 
 export const ProductImageWrapperStyled = styled.div<{ $url: String }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   aspect-ratio: 1 / 1;
   background-image: ${({ $url }) => `url(/${$url})`};
+  background-color: rgb(var(--background));
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

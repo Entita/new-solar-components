@@ -5,7 +5,7 @@ export const StepsMobileWrapperStyled = styled.section`
   flex-direction: column;
   row-gap: 1rem;
 
-  button {
+  a {
     margin-top: 10vh;
     background-color: rgb(var(--main-yellow));
     color: var(--dark-color);
@@ -15,5 +15,6 @@ export const StepsMobileWrapperStyled = styled.section`
     border-radius: 4px;
     font-weight: 800;
     text-transform: uppercase;
+    text-align: center;
   }
 `

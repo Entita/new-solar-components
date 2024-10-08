@@ -1,6 +1,7 @@
 import React from 'react'
 import { StepsDescriptionWrapperStyled, StepsSectionWrapperStyled, StepsTitleStyled, StepsTitleWrapperStyled } from './StepsDesktop.style'
 import { allSteps } from './StepsSection'
+import Link from 'next/link'
 
 export default function StepsDesktop() {
   const [step, setStep] = React.useState<number>(0)
@@ -71,7 +72,7 @@ export default function StepsDesktop() {
       <StepsDescriptionWrapperStyled>
         <p ref={descriptionRef}>
           {allSteps[step].description}
-          <button>Chci poptat produkty</button>
+          <Link href='/produkty'>Chci poptat produkty</Link>
         </p>
       </StepsDescriptionWrapperStyled>
     </StepsSectionWrapperStyled>

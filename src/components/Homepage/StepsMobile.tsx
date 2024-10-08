@@ -2,6 +2,7 @@ import React from 'react'
 import { allSteps } from './StepsSection'
 import { StepsMobileWrapperStyled } from './StepsMobile.style'
 import Dropdown from './Dropdown'
+import Link from 'next/link'
 
 export default function StepsMobile() {
   const [step, setStep] = React.useState<number>(0)
@@ -25,7 +26,7 @@ export default function StepsMobile() {
       {allSteps.map((currStep, index) => (
         <Dropdown key={index} step={currStep} open={step === index} changeStepTo={changeStepTo} index={index} />
       ))}
-      <button>Chci poptat produkty</button>
+      <Link href='/produkty'>Chci poptat produkty</Link>
     </StepsMobileWrapperStyled>
   )
 }

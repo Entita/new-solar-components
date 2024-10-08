@@ -31,7 +31,7 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
     top: ${({ $isOnTop }) => $isOnTop ? '-100%' : '0'};
     height: calc(7.5vh + 60px);
     background-color: rgba(var(--main-yellow), .75);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px) brightness(0.5);
     transition: top .2s ease;
     z-index: -1;
   }

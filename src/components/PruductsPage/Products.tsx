@@ -6,6 +6,7 @@ export const products = [
   {
     id: 'matice',
     image_url: 'img/example.png',
+    model: 'nut',
     description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
     full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
     attributes: [
@@ -17,13 +18,14 @@ export const products = [
       { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
     ],
     variants: [
-      { name : 'Matice M8 "14"', price: 100 },
-      { name : 'Matice M8 "12"', price: 300 },
+      { name : 'Matice M8 "14"', price: 100, pdf: 'Čtyrhranná matice M8' },
+      { name : 'Matice M8 "12"', price: 300, pdf: 'Čtyrhranná matice M8' },
     ]
   },
   {
     id: 'matice1',
     image_url: 'img/example.png',
+    model: 'nut',
     description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
     full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
     attributes: [
@@ -34,11 +36,12 @@ export const products = [
       { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
       { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
     ],
-    variants: [{ name : 'Matice M8 "14"', price: 100 }]
+    variants: [{ name : 'Matice M8 "14"', price: 100 , pdf: 'Čtyrhranná matice M8'}]
   },
   {
     id: 'matice2',
     image_url: 'img/example.png',
+    model: 'nut',
     description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
     full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
     attributes: [
@@ -49,11 +52,12 @@ export const products = [
       { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
       { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
     ],
-    variants: [{ name : 'Matice M8 "14"', price: 100 }]
+    variants: [{ name : 'Matice M8 "14"', price: 100, pdf: 'Čtyrhranná matice M8' }]
   },
   {
     id: 'matice3',
     image_url: 'img/example.png',
+    model: 'nut',
     description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
     full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
     attributes: [
@@ -64,11 +68,12 @@ export const products = [
       { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
       { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
     ],
-    variants: [{ name : 'Matice M8 "14"', price: 100 }]
+    variants: [{ name : 'Matice M8 "14"', price: 100, pdf: 'Čtyrhranná matice M8' }]
   },
   {
     id: 'matice4',
     image_url: 'img/example.png',
+    model: 'nut',
     description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
     full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
     attributes: [
@@ -79,7 +84,7 @@ export const products = [
       { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
       { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
     ],
-    variants: [{ name : 'Matice M8 "14"', price: 100 }]
+    variants: [{ name : 'Matice M8 "14"', price: 100, pdf: 'Čtyrhranná matice M8' }]
   },
 ]
 

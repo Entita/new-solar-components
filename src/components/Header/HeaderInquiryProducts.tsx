@@ -4,6 +4,7 @@ import Trash from '../SVG\'s/Trash'
 import { maxRestrictionAmount } from '../PruductsPage/Product'
 import { InquiryProductPriceWrapperStyled, InquiryProductWrapperStyled } from './HeaderInquiryProducts.style'
 import { editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
+import Link from 'next/link'
 
 export default function HeaderInquiryProducts({ product, variantIndex, inquiry }: { product: any, variantIndex: number, inquiry?: Boolean }) {
   const variant = React.useMemo(() => product.variants[variantIndex], [product, variantIndex])
@@ -31,7 +32,7 @@ export default function HeaderInquiryProducts({ product, variantIndex, inquiry }
   return (
     <InquiryProductWrapperStyled key={variantIndex}>
       <div>
-        <span>{variant.name}</span>
+        <Link href={`/produkty/${product.id}`}><span>{variant.name}</span></Link>
         <div onClick={() => setProductAmountInCart(0)}>
           <Trash height={16} />
         </div>

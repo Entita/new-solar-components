@@ -17,7 +17,7 @@ export const LandingSectionWrapperStyled = styled.section`
     font-size: clamp(18px, 1vw, 24px);
   }
 
-  button {
+  a {
     background-color: rgb(var(--main-yellow));
     color: var(--dark-color);
     border: unset;

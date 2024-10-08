@@ -24,6 +24,7 @@ export const InquiryFormWrapperStyled = styled.div`
       color: rgb(var(--background));
       max-width: 350px;
       width: 100%;
+      margin-left: auto;
     }
 
     @media (max-width: 878px) {

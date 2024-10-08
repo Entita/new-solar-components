@@ -99,7 +99,7 @@ export const StepsDescriptionWrapperStyled = styled.div`
     transition: color .2s ease, background-color .2s ease;
   }
 
-  button {
+  a {
     position: absolute;
     right: 0;
     top: calc(100% + 2rem);

@@ -21,6 +21,7 @@ export const ProductBgStyled = styled.div<{ $url: string }>`
   aspect-ratio: 1/1;
   margin: -1rem;
   background-image: ${({ $url }) => `url(/${$url})`};
+  background-color: rgb(var(--background));
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -83,6 +84,7 @@ export const ProductPriceStyled = styled.button`
   font-weight: 700;
   padding: min(20px, 2vw) min(20px, 4vw);
   width: fit-content;
+  z-index: 1;
 `
 
 export const ProductVariantsStyled = styled(ProductPriceStyled)`
@@ -207,7 +209,7 @@ export const ProductBottomButtonsWrapperStyled = styled.div<{ $show: Boolean }>`
         border: unset;
         color: rgb(var(--background));
         font-size: 32px;
-        height: 27px;
+        height: 24px;
         width: 78px;
         text-align: center;
         outline: none;

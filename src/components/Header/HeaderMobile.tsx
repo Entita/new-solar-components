@@ -11,7 +11,7 @@ export default function HeaderMobile() {
 
   return (
     <HeaderMobileWrapperStyled>
-      <HeaderMobileButtonWrapperStyled>
+      <HeaderMobileButtonWrapperStyled id='inquiry'>
         <HeaderMobileBackgroundStyled $open={open} />
         <HeaderMobileButtonRelativeWrapperStyled $open={open} onClick={() => setOpen(prev => !prev)}>
           <HeaderMobileButtonStyled $open={open} />

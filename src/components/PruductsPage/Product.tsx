@@ -15,17 +15,52 @@ export const getPriceRangeFromProduct = (product: any) => {
   return `${min} - ${max} Kč`
 }
 
+export const addToInquiryAnimation = (productEl: HTMLDivElement | null) => {
+  const inquiryEl = document.getElementById('inquiry')
+  if (!inquiryEl || !productEl) return
+
+  const inquiryBounds = inquiryEl.getBoundingClientRect()
+  const productBounds = productEl.getBoundingClientRect()
+  const centerX = inquiryBounds.left + inquiryBounds.width / 2
+  const centerY = inquiryBounds.top + inquiryBounds.height / 2
+
+  const clonedEl = productEl.cloneNode(false)
+  const parentEl = document.createElement('div')
+
+  parentEl.appendChild(clonedEl)
+  parentEl.style.position = 'fixed'
+  parentEl.style.top = `${productBounds.y}px`
+  parentEl.style.left = `${productBounds.x}px`
+  parentEl.style.width = `${productBounds.width}px`
+  parentEl.style.height = `${productBounds.height}px`
+  parentEl.style.zIndex = '10'
+  parentEl.style.scale = '0.5'
+  parentEl.style.pointerEvents = 'none'
+  parentEl.style.transition = 'scale 1.2s ease, left 1.2s ease, top 1.2s ease'
+
+  document.body.appendChild(parentEl)
+  setTimeout(() => {
+    parentEl.style.top = `${centerY - productBounds.height / 2}px`
+    parentEl.style.left = `${centerX - productBounds.width / 2}px`
+    parentEl.style.scale = '0'
+
+    setTimeout(() => parentEl.remove(), 1200)
+  }, 1)
+}
+
 export default function Product({ product }: { product: any } ) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const [variant, setVariant] = React.useState<number>(0)
   const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: any) => cartProduct.id === product.id), [inquiryCart, product])
   const isProductInCart = React.useMemo(() => !!cartProduct, [cartProduct])
+  const productRef = React.useRef<HTMLDivElement | null>(null)
 
   const dispatch = useAppDispatch()
 
   const addProductToCart = () => {
     const newProduct = { ...product, variants: product.variants.map((variant: any, index: number) => index === 0 ? { ...variant, amount: 1 } : { ...variant, amount: 0 }) }
     dispatch(addProduct(newProduct))
+    addToInquiryAnimation(productRef.current)
   }
 
   const setProductAmountInCart = (amount: number) => {
@@ -50,7 +85,7 @@ export default function Product({ product }: { product: any } ) {
 
   return (
     <ProductWrapperStyled>
-      <ProductBgStyled $url='img/example.png'>
+      <ProductBgStyled ref={productRef} $url='img/example.png'>
         <ProductButtonsWrapperStyled>
           <div>
             {product.variants.length > 1 ? (

@@ -9,6 +9,10 @@ import HeaderInquiryProducts from './HeaderInquiryProducts'
 export default function Inquiry() {
   const [showInquiry, setShowInquiry] = React.useState<Boolean>(false)
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
+  const numberOfProducts =
+    inquiryCart.products.reduce((sum, product) =>
+      product.variants.reduce((variantSum: number, variant: any) =>
+        (variant.amount > 0 ? 1 : 0) + variantSum, 0) + sum, 0)
 
   return (
     <InquiryWrapperStyled>
@@ -26,8 +30,8 @@ export default function Inquiry() {
         </div>
         <Link href='/poptavka'>Odeslat poptávku</Link>
       </InquiryContentWrapperStyled>
-      <InquiryStyled $show={showInquiry} onClick={() => setShowInquiry(prev => !prev)}>
-        <HeaderInquiryNumberStyled $show={inquiryCart.products.length > 0}>{inquiryCart.products.length}</HeaderInquiryNumberStyled>
+      <InquiryStyled id='inquiry' $show={showInquiry} onClick={() => setShowInquiry(prev => !prev)}>
+        <HeaderInquiryNumberStyled $show={inquiryCart.products.length > 0}>{numberOfProducts}</HeaderInquiryNumberStyled>
         <div>Vaše poptávka</div>
       </InquiryStyled>
       <DarkModeToggle />

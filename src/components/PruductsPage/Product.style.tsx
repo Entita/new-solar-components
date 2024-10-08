@@ -106,6 +106,7 @@ export const ProductVariantsWrapperStyled = styled.div<{ $open: Boolean }>`
   background-color: rgb(var(--background));
   padding: min(20px,2vw) min(20px,4vw);
   border-radius: 12px;
+  z-index: 2;
 
   & > h4 {
     font-size: clamp(18px, 1.6vw, 21px);
@@ -208,7 +209,7 @@ export const ProductBottomButtonsWrapperStyled = styled.div<{ $show: Boolean }>`
         background-color: transparent;
         border: unset;
         color: rgb(var(--background));
-        font-size: 32px;
+        font-size: 25px;
         height: 24px;
         width: 78px;
         text-align: center;

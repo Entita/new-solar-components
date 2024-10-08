@@ -13,6 +13,10 @@ export const ProductWrapperStyled = styled.div`
     font-size: clamp(16px, 1.4vw, 21px);
     font-weight: 300;
   }
+
+  & > a {
+    width: fit-content;
+  }
 `
 
 export const ProductBgStyled = styled.div<{ $url: string }>`

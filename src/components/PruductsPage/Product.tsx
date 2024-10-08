@@ -133,7 +133,9 @@ export default function Product({ product }: { product: any } ) {
           </ProductBottomButtonsWrapperStyled>
         </ProductButtonsWrapperStyled>
       </ProductBgStyled>
-      <h3>{product.variants[variant].name}</h3>
+      <Link href={`/produkty/${product.id}`}>
+        <h3>{product.variants[variant].name}</h3>
+      </Link>
       <p>{product.description}</p>
     </ProductWrapperStyled>
   )

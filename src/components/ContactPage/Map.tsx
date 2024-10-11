@@ -24,8 +24,8 @@ export default React.memo(function Map() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API as string,
     mapIds: ['688d1e65480187cb'],
   })
-  const emailRef = React.useRef<HTMLSpanElement | null>(null)
-  const phoneRef = React.useRef<HTMLSpanElement | null>(null)
+  const emailRef = React.useRef<HTMLSpanElement>(null!)
+  const phoneRef = React.useRef<HTMLSpanElement>(null!)
 
   const onLoad = React.useCallback(async (map: any) => {
     const { AdvancedMarkerElement }: any = await google.maps.importLibrary("marker")

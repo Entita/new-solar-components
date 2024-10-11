@@ -190,7 +190,7 @@ export const ProductBottomButtonsWrapperStyled = styled.div<{ $show: Boolean }>`
   }
 
   ${({ $show }) => $show && css`
-    ${ProductAddStyled} {
+
       background-color: rgb(var(--main-orange));
       border-color: rgb(var(--main-orange));
 

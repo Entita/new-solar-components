@@ -6,14 +6,14 @@ import Link from 'next/link'
 export default function StepsDesktop() {
   const [step, setStep] = React.useState<number>(0)
   const [lineCoords, setLineCoords] = React.useState<any>({})
-  const containerRef = React.useRef<HTMLDivElement | null>(null)
+  const containerRef = React.useRef<HTMLDivElement>(null!)
+  const descriptionRef = React.useRef<HTMLParagraphElement>(null!)
   const stepsRef = React.useRef<any[]>([])
-  const descriptionRef = React.useRef<HTMLParagraphElement | null>(null)
 
   function createLine() {
     const descriptionEl = descriptionRef.current
     const container = containerRef.current
-    if (!stepsRef.current || !descriptionEl || !container) return
+    if (!stepsRef.current) return
 
     const stepEl = stepsRef.current[step]
     const stepElBounds = stepEl.getBoundingClientRect()

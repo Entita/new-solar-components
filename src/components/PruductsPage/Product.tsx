@@ -52,8 +52,8 @@ export default function Product({ product }: { product: any } ) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const [variant, setVariant] = React.useState<number>(0)
   const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: any) => cartProduct.id === product.id), [inquiryCart, product])
-  const isProductInCart = React.useMemo(() => !!cartProduct, [cartProduct])
-  const productRef = React.useRef<HTMLDivElement | null>(null)
+  const [isProductInCart, setIsProductInCart] = React.useState<Boolean>(!!cartProduct)
+  const productRef = React.useRef<HTMLDivElement>(null!)
 
   const dispatch = useAppDispatch()
 
@@ -119,10 +119,10 @@ export default function Product({ product }: { product: any } ) {
                 <span>Přidat do poptávky</span>
               ) : (
                 <>
-                <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount - 1)}>-</button>
-                <input onChange={({ target }) => handleAmountInput(target.value)} value={cartProduct.variants[variant].amount} min={0} max={maxRestrictionAmount} />
-                <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount + 1)}>+</button>
-              </>
+                  <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount - 1)}>-</button>
+                  <input onChange={({ target }) => handleAmountInput(target.value)} value={cartProduct.variants[variant].amount} min={0} max={maxRestrictionAmount} />
+                  <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount + 1)}>+</button>
+                </>
               )}
             </ProductAddStyled>
             <ProductInfoStyled>

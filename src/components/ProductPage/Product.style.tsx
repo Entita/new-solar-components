@@ -130,7 +130,7 @@ export const ProductButtonsWrapperStyled = styled.div`
   row-gap: 2rem;
 
   button {
-    width: calc(50% - 0.5rem);
+    width: 100%;
     background-color: rgb(var(--foreground));
     color: rgb(var(--background));
     font-size: 22px;
@@ -140,7 +140,6 @@ export const ProductButtonsWrapperStyled = styled.div`
     min-height: 64px;
 
     @media (max-width: 700px) {
-      width: 100%;
       min-width: min(250px, 100%);
     }
   }

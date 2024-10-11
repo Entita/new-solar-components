@@ -2,11 +2,11 @@ import React from 'react'
 import { MapFormFieldWrapperStyled, MapFormNameFieldWrapperStyled, MapFormSendWrapperStyled, MapFormWrapperStyled } from './MapForm.style'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
-  const nameRef = React.useRef<HTMLInputElement | null>(null)
-  const surnameRef = React.useRef<HTMLInputElement | null>(null)
-  const emailRef = React.useRef<HTMLInputElement | null>(null)
-  const phoneRef = React.useRef<HTMLInputElement | null>(null)
-  const textRef = React.useRef<HTMLTextAreaElement | null>(null)
+  const nameRef = React.useRef<HTMLInputElement>(null!)
+  const surnameRef = React.useRef<HTMLInputElement>(null!)
+  const emailRef = React.useRef<HTMLInputElement>(null!)
+  const phoneRef = React.useRef<HTMLInputElement>(null!)
+  const textRef = React.useRef<HTMLTextAreaElement>(null!)
 
   return (
     <MapFormWrapperStyled>

@@ -6,8 +6,6 @@ export default function CopyComponent({ passRef }: { passRef: any }) {
   const [copied, setCopied] = React.useState<Boolean>(false)
 
   const copyToClipboard = () => {
-    if (!passRef?.current) return
-
     const value = passRef.current.value || passRef.current.innerText
     navigator.clipboard.writeText(value)
     setCopied(true)

@@ -18,11 +18,10 @@ const animations = {
 }
 
 export default function HowSection() {
-  const lineRef = React.useRef<HTMLDivElement | null>(null)
+  const lineRef = React.useRef<HTMLDivElement>(null!)
 
   const changeZIndex = () => {
     setTimeout(() => {
-      if (!lineRef.current) return
       lineRef.current.style.zIndex = '-1'
     }, 550)
   }

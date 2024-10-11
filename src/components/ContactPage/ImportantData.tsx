@@ -3,11 +3,11 @@ import { ImportantDataContentWrapperStyled, ImportantDataRowWrapperStyled, Impor
 import CopyComponent from './CopyComponent'
 
 export default function ImportantData() {
-  const icoRef = React.useRef<HTMLSpanElement | null>(null)
-  const dicRef = React.useRef<HTMLSpanElement | null>(null)
-  const accountRef = React.useRef<HTMLSpanElement | null>(null)
-  const ibanRef = React.useRef<HTMLSpanElement | null>(null)
-  const swiftRef = React.useRef<HTMLSpanElement | null>(null)
+  const icoRef = React.useRef<HTMLSpanElement>(null!)
+  const dicRef = React.useRef<HTMLSpanElement>(null!)
+  const accountRef = React.useRef<HTMLSpanElement>(null!)
+  const ibanRef = React.useRef<HTMLSpanElement>(null!)
+  const swiftRef = React.useRef<HTMLSpanElement>(null!)
 
   return (
     <ImportantDataWrapperStyled>

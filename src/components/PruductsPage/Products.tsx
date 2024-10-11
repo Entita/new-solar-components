@@ -89,14 +89,22 @@ export const products = [
 ]
 
 export default function Products() {
+  const [isMounted, setIsMounted] = React.useState(false)
+
+  React.useEffect(() => setIsMounted(true), [])
+
   return (
     <ProductsWrapperStyled>
-      {products.map((product: any, index: number) => (
-        <Product
-          key={index}
-          product={product}
-        />
-      ))}
+      {isMounted && (
+        <>
+          {products.map((product: any, index: number) => (
+            <Product
+              key={index}
+              product={product}
+            />
+          ))}
+        </>
+      )}
     </ProductsWrapperStyled>
   )
 }

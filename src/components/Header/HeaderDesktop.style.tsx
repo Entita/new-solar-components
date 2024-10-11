@@ -21,7 +21,7 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
   transition: background-color .2s ease, color .2s ease;
   color: ${({ $isOnTop }) => $isOnTop ? 'rgb(var(--foreground))' : 'var(--dark-color)'};
   padding: 3.75vh 10vw;
-  z-index: 2;
+  z-index: 3;
 
   &::before {
     position: absolute;

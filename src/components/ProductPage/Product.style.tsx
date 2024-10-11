@@ -181,7 +181,7 @@ export const ProductAmountWrapperStyled = styled.div`
     background-color: transparent;
     border: unset;
     color: rgb(var(--background));
-    font-size: 48px;
+    font-size: 44px;
     padding: 4px;
   }
 `

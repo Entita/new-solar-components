@@ -52,7 +52,7 @@ export default function Product({ product }: { product: any } ) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const [variant, setVariant] = React.useState<number>(0)
   const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: any) => cartProduct.id === product.id), [inquiryCart, product])
-  const [isProductInCart, setIsProductInCart] = React.useState<Boolean>(!!cartProduct)
+  const isProductInCart = React.useMemo<Boolean>(() => !!cartProduct, [cartProduct])
   const productRef = React.useRef<HTMLDivElement>(null!)
 
   const dispatch = useAppDispatch()

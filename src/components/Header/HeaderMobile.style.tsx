@@ -4,7 +4,7 @@ export const HeaderMobileWrapperStyled = styled.header`
   position: fixed;
   top: 12px;
   left: 16px;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
 `
 

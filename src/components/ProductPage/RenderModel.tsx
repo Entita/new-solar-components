@@ -2,8 +2,9 @@ import React, { Suspense } from 'react'
 import { Canvas } from "@react-three/fiber"
 import { useGLTF, OrbitControls, Environment } from "@react-three/drei"
 import Loading from './Loading'
+import { ProductAdjustments, ProductModel } from '@/types/Model'
 
-export default function RenderModel({ model }: { model: string }) {
+export default function RenderModel({ model }: { model: ProductModel }) {
   return (
     <Suspense fallback={<Loading />}>
       <Canvas style={{ position: 'absolute', width: 'calc(100% - 3rem)', height: 'calc(100% - 3rem)', backgroundColor: 'rgb(var(--background))' }} shadows camera={{ position: [-2, 1, -3.8], fov: 45 }}>
@@ -15,9 +16,9 @@ export default function RenderModel({ model }: { model: string }) {
   )
 }
 
-function Model({ model }: { model: any }) {
+function Model({ model }: { model: ProductModel }) {
   const { nodes } = useGLTF(`/models/${model}.gltf`)
-  const modelAdjustment = adjustments[model]
+  const modelAdjustment = React.useMemo(() => adjustments[model], [model, adjustments])
 
   return (
     <>
@@ -30,7 +31,7 @@ function Model({ model }: { model: any }) {
   )
 }
 
-const adjustments: any = {
+const adjustments: ProductAdjustments = {
   'drzak_na_falc': {
     scale: 0.04,
     position: [-1.5, 0.5, 0.75],

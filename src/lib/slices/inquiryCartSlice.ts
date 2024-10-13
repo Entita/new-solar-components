@@ -1,4 +1,4 @@
-import { InquiryCartState } from "@/types/InquiryCart";
+import { InquiryCartState, InquiryProductState } from "@/types/InquiryCart";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: InquiryCartState = {
@@ -13,10 +13,10 @@ const inquiryCartSlice = createSlice({
       state.products.push(action.payload)
     },
     editProduct: (state, action) => {
-      state.products = state.products.map((product: any) => product.id === action.payload.id ? product = action.payload.newProduct : product)
+      state.products = state.products.map((product: InquiryProductState) => product.id === action.payload.id ? product = action.payload.newProduct : product)
     },
     removeProduct: (state, action) => {
-      state.products = state.products.filter((product: any) => product.id !== action.payload.id)
+      state.products = state.products.filter((product: InquiryProductState) => product.id !== action.payload.id)
     },
     clear: (state) => {
       state.products = []

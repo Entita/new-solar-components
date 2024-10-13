@@ -2,14 +2,15 @@ import React from 'react'
 import { ProductAddStyled, ProductBgStyled, ProductBottomButtonsWrapperStyled, ProductButtonsWrapperStyled, ProductInfoStyled, ProductPriceStyled, ProductVariantsStyled, ProductVariantsWrapperStyled, ProductVariantWrapperStyled, ProductWrapperStyled } from './Product.style'
 import Info from '../SVG\'s/Info'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks'
-import { InquiryCartState } from '@/types/InquiryCart'
+import { InquiryCartState, InquiryProductState, InquiryProductVariantState } from '@/types/InquiryCart'
+import { ProductState, ProductVariantState } from '@/types/Products'
 import { addProduct, editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
 import Link from 'next/link'
 
 export const maxRestrictionAmount = 9999
 
-export const getPriceRangeFromProduct = (product: any) => {
-  const prices = [...product.variants.map((variant: any) => variant.price)]
+export const getPriceRangeFromProduct = (product: ProductState) => {
+  const prices = [...product.variants.map((variant: ProductVariantState) => variant.price)]
   const min = Math.min(...prices)
   const max = Math.max(...prices)
   return `${min} - ${max} Kč`
@@ -48,25 +49,30 @@ export const addToInquiryAnimation = (productEl: HTMLDivElement | null) => {
   }, 1)
 }
 
-export default function Product({ product }: { product: any } ) {
+export default function Product({ product }: { product: ProductState } ) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const [variant, setVariant] = React.useState<number>(0)
-  const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: any) => cartProduct.id === product.id), [inquiryCart, product])
-  const isProductInCart = React.useMemo<Boolean>(() => !!cartProduct, [cartProduct])
+  const cartProduct = React.useMemo(() => inquiryCart.products.find((cartProduct: InquiryProductState) => cartProduct.id === product.id), [inquiryCart, product])
   const productRef = React.useRef<HTMLDivElement>(null!)
 
   const dispatch = useAppDispatch()
 
   const addProductToCart = () => {
-    const newProduct = { ...product, variants: product.variants.map((variant: any, index: number) => index === 0 ? { ...variant, amount: 1 } : { ...variant, amount: 0 }) }
+    const newProduct = {
+      ...product,
+      variants: product.variants.map(
+        (variant: ProductVariantState, index: number) =>
+          index === 0 ? { ...variant, amount: 1 } : { ...variant, amount: 0 }),
+    }
     dispatch(addProduct(newProduct))
     addToInquiryAnimation(productRef.current)
   }
 
   const setProductAmountInCart = (amount: number) => {
+    if (!cartProduct) return
     const newAmount = amount < 0 ? 0 : amount > maxRestrictionAmount ? maxRestrictionAmount : amount
     let otherVariantsAmount = 0
-    cartProduct.variants.forEach((cartVariant: any, index: number) => index !== variant && (otherVariantsAmount += cartVariant.amount))
+    cartProduct.variants.forEach((cartVariant: InquiryProductVariantState, index: number) => index !== variant && (otherVariantsAmount += cartVariant.amount))
 
     if (newAmount + otherVariantsAmount <= 0) {
       dispatch(removeProduct({ id: product.id }))
@@ -90,10 +96,10 @@ export default function Product({ product }: { product: any } ) {
           <div>
             {product.variants.length > 1 ? (
               <>
-                <ProductVariantsWrapperStyled $open={isProductInCart}>
+                <ProductVariantsWrapperStyled $open={!!cartProduct}>
                   <h4>Varianty produktu:</h4>
-                  {product.variants.map((productVariant: any, index: number) => {
-                    const cartVariant = cartProduct?.variants.find((x: any, cartIndex: number) => index === cartIndex)
+                  {product.variants.map((productVariant: ProductVariantState, index: number) => {
+                    const cartVariant = cartProduct?.variants.find((x: InquiryProductVariantState, cartIndex: number) => index === cartIndex)
 
                     return (
                       <ProductVariantWrapperStyled key={index} $selected={variant === index} onClick={() => setVariant(index)}>
@@ -113,9 +119,9 @@ export default function Product({ product }: { product: any } ) {
               <ProductPriceStyled>{`${product.variants[0].price} Kč`}</ProductPriceStyled>
             )}
           </div>
-          <ProductBottomButtonsWrapperStyled $show={isProductInCart}>
-            <ProductAddStyled onClick={() => !isProductInCart && addProductToCart()}>
-              {!isProductInCart ? (
+          <ProductBottomButtonsWrapperStyled $show={!!cartProduct}>
+            <ProductAddStyled onClick={() => !cartProduct && addProductToCart()}>
+              {!cartProduct ? (
                 <span>Přidat do poptávky</span>
               ) : (
                 <>

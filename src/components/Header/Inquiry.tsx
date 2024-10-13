@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useAppSelector } from '@/lib/hooks/hooks'
-import { InquiryCartState } from '@/types/InquiryCart'
+import { InquiryCartState, InquiryProductState, InquiryProductVariantState } from '@/types/InquiryCart'
 import { HeaderInquiryNumberStyled, InquiryContentWrapperStyled, InquiryStyled, InquiryWrapperStyled } from './Inquiry.style'
 import DarkModeToggle from '../DarkMode/DarkModeToggle'
 import HeaderInquiryProducts from './HeaderInquiryProducts'
@@ -11,7 +11,7 @@ export default function Inquiry() {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const numberOfProducts =
     inquiryCart.products.reduce((sum, product) =>
-      product.variants.reduce((variantSum: number, variant: any) =>
+      product.variants.reduce((variantSum: number, variant: InquiryProductVariantState) =>
         (variant.amount > 0 ? 1 : 0) + variantSum, 0) + sum, 0)
 
   return (
@@ -20,9 +20,9 @@ export default function Inquiry() {
         <h3>Vaše produkty:</h3>
         <div>
           {inquiryCart.products.length === 0 && <span>Poptávka je prázdná</span>}
-          {inquiryCart.products.map((inquiryProduct: any, index: number) => (
+          {inquiryCart.products.map((inquiryProduct: InquiryProductState, index: number) => (
             <React.Fragment key={index}>
-              {inquiryProduct.variants.map((inquiryVariant: any, variantIndex: number) => inquiryVariant.amount > 0 && (
+              {inquiryProduct.variants.map((inquiryVariant: InquiryProductVariantState, variantIndex: number) => inquiryVariant.amount > 0 && (
                 <HeaderInquiryProducts key={variantIndex} product={inquiryProduct} variantIndex={variantIndex} />
               ))}
             </React.Fragment>

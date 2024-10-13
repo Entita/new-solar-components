@@ -1,3 +1,13 @@
+import { ProductState, ProductVariantState } from "./Products";
+
 export interface InquiryCartState {
-  products: any[]
+  products: InquiryProductState[]
+}
+
+export interface InquiryProductState extends ProductState {
+  variants: InquiryProductVariantState[]
+}
+
+export interface InquiryProductVariantState extends ProductVariantState {
+  amount: number
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ProductsWrapperStyled } from './Products.style'
 import Product from './Product'
+import { ProductState } from '@/types/InquiryCart'
 
 export const products = [
   {
@@ -97,7 +98,7 @@ export default function Products() {
     <ProductsWrapperStyled>
       {isMounted && (
         <>
-          {products.map((product: any, index: number) => (
+          {products.map((product: ProductState, index: number) => (
             <Product
               key={index}
               product={product}

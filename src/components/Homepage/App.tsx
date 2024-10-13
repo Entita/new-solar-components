@@ -6,7 +6,7 @@ import WhyUsSection from './WhyUsSection'
 import HowSection from './HowSection'
 import StepsSection from './StepsSection'
 
-export default function App({ excelData }: { excelData: any }) {
+export default function App() {
   return (
     <AppWrapperStyled>
       <LandingSection />

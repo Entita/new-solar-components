@@ -21,7 +21,5 @@ import App from "@/components/Homepage/App";
 // };
 
 export default async function Home() {
-  const excelData = {}
-
-  return <App excelData={excelData} />
+  return <App />
 }

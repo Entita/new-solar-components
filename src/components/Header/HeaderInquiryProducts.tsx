@@ -5,15 +5,16 @@ import { maxRestrictionAmount } from '../PruductsPage/Product'
 import { InquiryProductPriceWrapperStyled, InquiryProductWrapperStyled } from './HeaderInquiryProducts.style'
 import { editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
 import Link from 'next/link'
+import { InquiryProductState, InquiryProductVariantState } from '@/types/InquiryCart'
 
-export default function HeaderInquiryProducts({ product, variantIndex, inquiry }: { product: any, variantIndex: number, inquiry?: Boolean }) {
+export default function HeaderInquiryProducts({ product, variantIndex, inquiry }: { product: InquiryProductState, variantIndex: number, inquiry?: Boolean }) {
   const variant = React.useMemo(() => product.variants[variantIndex], [product, variantIndex])
   const dispatch = useAppDispatch()
 
   const setProductAmountInCart = (amount: number) => {
     const newAmount = amount < 0 ? 0 : amount > maxRestrictionAmount ? maxRestrictionAmount : amount
     let otherVariantsAmount = 0
-    product.variants.forEach((cartVariant: any, index: number) => index !== variantIndex && (otherVariantsAmount += cartVariant.amount))
+    product.variants.forEach((cartVariant: InquiryProductVariantState, index: number) => index !== variantIndex && (otherVariantsAmount += cartVariant.amount))
 
     if (newAmount + otherVariantsAmount <= 0) {
       dispatch(removeProduct({ id: product.id }))

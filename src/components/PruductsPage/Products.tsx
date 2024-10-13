@@ -1,7 +1,7 @@
 import React from 'react'
 import { ProductsWrapperStyled } from './Products.style'
 import Product from './Product'
-import { ProductState } from '@/types/InquiryCart'
+import { ProductState } from '@/types/Products'
 
 export const products = [
   {

@@ -28,7 +28,7 @@ export const allSteps = [
 export default function StepsSection() {
   const [isMobile, setIsMobile] = React.useState<Boolean | null>(null)
 
-  const isDeviceMobile = () => setIsMobile(window.innerWidth < 900)
+  const isDeviceMobile = React.useCallback(() => setIsMobile(window.innerWidth < 900), [])
 
   React.useEffect(() => {
     isDeviceMobile()

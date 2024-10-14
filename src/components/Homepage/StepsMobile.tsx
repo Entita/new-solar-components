@@ -7,13 +7,13 @@ import Link from 'next/link'
 export default function StepsMobile() {
   const [step, setStep] = React.useState<number>(0)
 
-  const changeStepToNext = () => {
+  const changeStepToNext = React.useCallback(() => {
     setStep((prev: number) => prev >= allSteps.length - 1 ? 0 : prev + 1)
-  }
+  }, [allSteps, step])
 
-  const changeStepTo = (newStep: number) => {
+  const changeStepTo = React.useCallback((newStep: number) => {
     setStep((prev: number) => prev === newStep ? -1 : newStep)
-  }
+  }, [allSteps, step])
 
   React.useEffect(() => {
     const interval = setInterval(() => changeStepToNext(), 3500)

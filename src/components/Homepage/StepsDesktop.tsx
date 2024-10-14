@@ -37,9 +37,9 @@ export default function StepsDesktop() {
     })
   }
 
-  const changeStepToNext = () => {
+  const changeStepToNext = React.useCallback(() => {
     setStep((prev: number) => prev >= allSteps.length - 1 ? 0 : prev + 1)
-  }
+  }, [allSteps, step])
 
   React.useEffect(() => {
     const interval = setInterval(() => changeStepToNext(), 3500)

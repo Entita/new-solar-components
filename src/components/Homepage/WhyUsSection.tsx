@@ -5,9 +5,9 @@ export default function WhyUsSection() {
   const [selected, setSelected] = React.useState<number>(0)
   const [hovered, setHovered] = React.useState<number | null>(null)
 
-  const changeSelectToNext = () => {
+  const changeSelectToNext = React.useCallback(() => {
     setSelected((prev: number) => prev >= 2 ? 0 : prev + 1)
-  }
+  }, [selected])
 
   React.useEffect(() => {
     const interval = setInterval(() => {

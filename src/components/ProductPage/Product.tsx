@@ -19,7 +19,7 @@ export default function Product({ product }: { product: ProductState }) {
 
   const dispatch = useAppDispatch()
 
-  const addProductToCart = () => {
+  const addProductToCart = React.useCallback(() => {
     if (cartProduct) {
       setProductAmountInCart(1)
     } else {
@@ -29,9 +29,9 @@ export default function Product({ product }: { product: ProductState }) {
           index === variant ? { ...productVariant, amount: 1 } : { ...productVariant, amount: 0 }) }
       dispatch(addProduct(newProduct))
     }
-  }
+  }, [inquiryCart, product, cartProduct])
 
-  const setProductAmountInCart = (amount: number) => {
+  const setProductAmountInCart = React.useCallback((amount: number) => {
     if (!cartProduct) return
 
     const newAmount = amount < 0 ? 0 : amount > maxRestrictionAmount ? maxRestrictionAmount : amount
@@ -39,18 +39,18 @@ export default function Product({ product }: { product: ProductState }) {
     cartProduct.variants.forEach((cartVariant: InquiryProductVariantState, index: number) => index !== variant && (otherVariantsAmount += cartVariant.amount))
 
     if (newAmount + otherVariantsAmount <= 0) {
-      dispatch(removeProduct({ id: product.id }))
+      dispatch(removeProduct({ id: cartProduct.id }))
     } else {
       const newProduct = JSON.parse(JSON.stringify(cartProduct))
       newProduct.variants[variant].amount = newAmount
-      dispatch(editProduct({ id: product.id, newProduct }))
+      dispatch(editProduct({ id: cartProduct.id, newProduct }))
     }
-  }
+  }, [cartProduct, variant])
 
-  const handleAmountInput = (value: string) => {
+  const handleAmountInput = React.useCallback((value: string) => {
     const numberFromValue = Number(value)
     if (!Number.isNaN(numberFromValue) && numberFromValue >= 0) setProductAmountInCart(numberFromValue)
-  }
+  }, [])
 
   return (
     <ProductWrapperStyled>

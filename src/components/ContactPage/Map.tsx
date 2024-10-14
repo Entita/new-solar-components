@@ -40,9 +40,9 @@ export default React.memo(function Map() {
   }, [])
 
   const onUnmount = React.useCallback(() => setMap(null), [])
-  const toggleMapCenterType = () => {
+  const toggleMapCenterType = React.useCallback(() => {
     setMapCenterType(prev => prev === 'storage' ? 'company' : 'storage')
-  }
+  }, [mapCenterType])
 
   React.useEffect(() => {
     if (map) {

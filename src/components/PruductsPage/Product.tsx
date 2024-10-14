@@ -57,7 +57,7 @@ export default function Product({ product }: { product: ProductState } ) {
 
   const dispatch = useAppDispatch()
 
-  const addProductToCart = () => {
+  const addProductToCart = React.useCallback(() => {
     const newProduct = {
       ...product,
       variants: product.variants.map(
@@ -66,28 +66,28 @@ export default function Product({ product }: { product: ProductState } ) {
     }
     dispatch(addProduct(newProduct))
     addToInquiryAnimation(productRef.current)
-  }
+  }, [inquiryCart, product, cartProduct])
 
-  const setProductAmountInCart = (amount: number) => {
+  const setProductAmountInCart = React.useCallback((amount: number) => {
     if (!cartProduct) return
     const newAmount = amount < 0 ? 0 : amount > maxRestrictionAmount ? maxRestrictionAmount : amount
     let otherVariantsAmount = 0
     cartProduct.variants.forEach((cartVariant: InquiryProductVariantState, index: number) => index !== variant && (otherVariantsAmount += cartVariant.amount))
 
     if (newAmount + otherVariantsAmount <= 0) {
-      dispatch(removeProduct({ id: product.id }))
+      dispatch(removeProduct({ id: cartProduct.id }))
       setVariant(0)
     } else {
       const newProduct = JSON.parse(JSON.stringify(cartProduct))
       newProduct.variants[variant].amount = newAmount
-      dispatch(editProduct({ id: product.id, newProduct }))
+      dispatch(editProduct({ id: cartProduct.id, newProduct }))
     }
-  }
+  }, [cartProduct, variant])
 
-  const handleAmountInput = (value: string) => {
+  const handleAmountInput = React.useCallback((value: string) => {
     const numberFromValue = Number(value)
     if (!Number.isNaN(numberFromValue) && numberFromValue >= 0) setProductAmountInCart(numberFromValue)
-  }
+  }, [])
 
   return (
     <ProductWrapperStyled>

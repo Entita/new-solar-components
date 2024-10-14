@@ -10,7 +10,7 @@ export default function HeaderDesktop() {
   const [isOnTop, setIsOnTop] = React.useState<Boolean>(true)
   const pathname = usePathname()
 
-  const changeIsOnTop = () => setIsOnTop(window.scrollY === 0)
+  const changeIsOnTop = React.useCallback(() => setIsOnTop(window.scrollY === 0), [])
 
   React.useEffect(() => {
     changeIsOnTop()

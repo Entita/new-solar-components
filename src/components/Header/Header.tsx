@@ -6,7 +6,7 @@ import HeaderMobile from './HeaderMobile'
 export default function Header() {
   const [isMobile, setIsMobile] = React.useState<Boolean | null>(null)
 
-  const isDeviceMobile = () => setIsMobile(window.innerWidth < 760)
+  const isDeviceMobile = React.useCallback(() => setIsMobile(window.innerWidth < 760), [])
 
   React.useEffect(() => {
     isDeviceMobile()

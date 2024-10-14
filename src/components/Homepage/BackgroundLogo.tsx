@@ -5,9 +5,9 @@ import BigLogo from '../SVG\'s/BigLogo'
 export default function BackgroundLogo() {
   const [logoHeight, setLogoHeight] = React.useState(0)
 
-  const changeLogoHeight = () => {
+  const changeLogoHeight = React.useCallback(() => {
     setLogoHeight(window.innerHeight)
-  }
+  }, [])
 
   React.useEffect(() => {
     changeLogoHeight()

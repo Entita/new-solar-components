@@ -28,7 +28,6 @@ export default function DarkModeToggle() {
   }, []);
 
   return (
-    <DarkModeToggleWrapperStyled $mode={mode} onClick={() => toggleDarkModeApp(mode === 'dark' ? 'light' : 'dark')}>
-    </DarkModeToggleWrapperStyled>
+    <DarkModeToggleWrapperStyled data-testid='header-darkmode' $mode={mode} onClick={() => toggleDarkModeApp(mode === 'dark' ? 'light' : 'dark')} />
   )
 }

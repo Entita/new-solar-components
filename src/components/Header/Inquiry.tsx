@@ -31,7 +31,7 @@ export default function Inquiry() {
         <Link href='/poptavka'>Odeslat poptávku</Link>
       </InquiryContentWrapperStyled>
       <InquiryStyled id='inquiry' $show={showInquiry} onClick={() => setShowInquiry(prev => !prev)}>
-        <HeaderInquiryNumberStyled $show={inquiryCart.products.length > 0}>{numberOfProducts}</HeaderInquiryNumberStyled>
+        <HeaderInquiryNumberStyled data-testid='header-desktop-inquiry-number' $show={inquiryCart.products.length > 0}>{numberOfProducts}</HeaderInquiryNumberStyled>
         <div>Vaše poptávka</div>
       </InquiryStyled>
       <DarkModeToggle />

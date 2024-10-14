@@ -1,21 +1,23 @@
 import styled from "styled-components"
 
 export const MapFormWrapperStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: min(2rem, 2vw);
-  background-color: #717171;
-  color: var(--white-color);
-  height: 100%;
-  width: calc(100% - 5vw);
-  margin-left: auto;
-  border-radius: 24px;
-  padding: min(3rem, 3vw) 3rem;
-  pointer-events: all;
-  overflow: hidden;
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: min(2rem, 2vw);
+    background-color: #717171;
+    color: var(--white-color);
+    height: 100%;
+    width: calc(100% - 5vw);
+    margin-left: auto;
+    border-radius: 24px;
+    padding: min(3rem, 3vw) 3rem;
+    pointer-events: all;
+    overflow: hidden;
 
-  @media (max-width: 500px) {
-    margin-left: unset;
+    @media (max-width: 500px) {
+      margin-left: unset;
+    }
   }
 `
 
@@ -57,6 +59,10 @@ export const MapFormFieldWrapperStyled = styled.div`
     resize: none;
     min-height: 200px;
   }
+
+  div {
+    color: #ff9d9d;
+  }
 `
 
 export const MapFormSendWrapperStyled = styled.div`
@@ -72,8 +78,14 @@ export const MapFormSendWrapperStyled = styled.div`
     letter-spacing: 1px;
     background-color: rgb(var(--main-orange));
     color: var(--white-color);
+    transition: filter .2s ease;
     border: unset;
     cursor: pointer;
+  }
+
+  button:disabled {
+    filter: contrast(.6);
+    cursor: not-allowed;
   }
 
   input {
@@ -91,6 +103,10 @@ export const MapFormSendWrapperStyled = styled.div`
   & > div {
     display: flex;
     column-gap: 16px;
+  }
+
+  & > div > div {
+    color: #ff9d9d;
   }
 
   label, input {

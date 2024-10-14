@@ -1,45 +1,77 @@
 import React from 'react'
 import { MapFormFieldWrapperStyled, MapFormNameFieldWrapperStyled, MapFormSendWrapperStyled, MapFormWrapperStyled } from './MapForm.style'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { FormErrorsState, FormState } from '@/types/Form'
+import axios from 'axios'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
-  const nameRef = React.useRef<HTMLInputElement>(null!)
-  const surnameRef = React.useRef<HTMLInputElement>(null!)
-  const emailRef = React.useRef<HTMLInputElement>(null!)
-  const phoneRef = React.useRef<HTMLInputElement>(null!)
-  const textRef = React.useRef<HTMLTextAreaElement>(null!)
+  const sendForm = React.useCallback(async (data: FormState, { setSubmitting }: { setSubmitting: Function }) => {
+    await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz' })
+      .finally(() => setSubmitting(false))
+  }, [])
+
+  const formValidation = React.useCallback((values: FormState) => {
+    const errors: FormErrorsState = {}
+    if (!values.name) errors.name = '*Povinné'
+    else if (!values.surname) errors.surname = '*Povinné'
+    else if (!values.email) errors.email = '*Povinné'
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) errors.email = 'Nesprávná emailová adresa'
+    else if (!values.phone) errors.phone = '*Povinné'
+    else if (!values.message) errors.message = '*Povinné'
+    else if (!values.agreement) errors.agreement = '*Povinné'
+    return errors
+  }, [])
 
   return (
     <MapFormWrapperStyled>
-      {inquiry && <h2>Formulář k poptávce</h2>}
-      <MapFormNameFieldWrapperStyled>
-        <MapFormFieldWrapperStyled>
-          <span>Jméno<i>*</i></span>
-          <input ref={nameRef} placeholder='Jméno' />
-        </MapFormFieldWrapperStyled>
-        <MapFormFieldWrapperStyled>
-          <span>Příjmení<i>*</i></span>
-          <input ref={surnameRef} placeholder='Příjmení' />
-        </MapFormFieldWrapperStyled>
-      </MapFormNameFieldWrapperStyled>
-      <MapFormFieldWrapperStyled>
-        <span>Email<i>*</i></span>
-        <input ref={emailRef} placeholder='vase@spolecnost.cz' />
-      </MapFormFieldWrapperStyled>
-      <MapFormFieldWrapperStyled>
-        <span>Telefonní číslo<i>*</i></span>
-        <input ref={phoneRef} placeholder='+420 732 433 877' />
-      </MapFormFieldWrapperStyled>
-      <MapFormFieldWrapperStyled>
-        <span>Zpráva<i>*</i></span>
-        <textarea ref={textRef} placeholder='Prostor pro váš dotaz ...'  />
-      </MapFormFieldWrapperStyled>
-      <MapFormSendWrapperStyled>
-        <div>
-          <input id='agreement' type='checkbox' />
-          <label htmlFor='agreement'>Odesláním tohoto  formuláře <u>souhlasím s podmínkami</u> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
-        </div>
-        <button>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
-      </MapFormSendWrapperStyled>
+      <Formik
+        onSubmit={sendForm}
+        validate={formValidation}
+        initialValues={{ name: '', surname: '', email: '', phone: '', message: '', agreement: false } as FormState}
+      >
+        {({ isSubmitting }: { isSubmitting: boolean }) => (
+         <Form>
+         {inquiry && <h2>Formulář k poptávce</h2>}
+         <MapFormNameFieldWrapperStyled>
+           <MapFormFieldWrapperStyled>
+             <span>Jméno<i>*</i></span>
+             <Field name="name" type="text" placeholder='Jméno' />
+             <ErrorMessage name="name" component="div" />
+           </MapFormFieldWrapperStyled>
+           <MapFormFieldWrapperStyled>
+             <span>Příjmení<i>*</i></span>
+             <Field name="surname" type="text" placeholder='Příjmení' />
+             <ErrorMessage name="surname" component="div" />
+           </MapFormFieldWrapperStyled>
+         </MapFormNameFieldWrapperStyled>
+         <MapFormFieldWrapperStyled>
+           <span>Email<i>*</i></span>
+           <Field name="email" type="email" placeholder='vase@spolecnost.cz' />
+           <ErrorMessage name="email" component="div" />
+         </MapFormFieldWrapperStyled>
+         <MapFormFieldWrapperStyled>
+           <span>Telefonní číslo<i>*</i></span>
+           <Field name="phone" type="text" placeholder='+420 732 433 877' />
+           <ErrorMessage name="phone" component="div" />
+         </MapFormFieldWrapperStyled>
+         <MapFormFieldWrapperStyled>
+           <span>Zpráva<i>*</i></span>
+           <Field name="message" component="textarea" placeholder='Prostor pro váš dotaz ...'  />
+           <ErrorMessage name="message" component="div" />
+         </MapFormFieldWrapperStyled>
+         <MapFormSendWrapperStyled>
+           <div>
+              <div>
+              <Field name="agreement" type="checkbox" id='agreement' />
+              <ErrorMessage name="agreement" component="div" />
+              </div>
+             <label htmlFor='agreement'>Odesláním tohoto  formuláře <u>souhlasím s podmínkami</u> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
+           </div>
+           <button type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
+         </MapFormSendWrapperStyled>
+       </Form>
+       )}
+      </Formik>
     </MapFormWrapperStyled>
   )
 }

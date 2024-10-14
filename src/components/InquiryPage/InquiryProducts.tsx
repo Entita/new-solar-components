@@ -6,21 +6,28 @@ import { InquiryCartState, InquiryProductState, InquiryProductVariantState } fro
 import { InquiryContentWrapperStyled } from '../Header/Inquiry.style'
 
 export default function InquiryProducts() {
+  const [isMounted, setIsMounted] = React.useState(false)
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
+
+  React.useEffect(() => setIsMounted(true), [])
 
   return (
     <InquiryProductsWrapperStyled>
       <InquiryContentWrapperStyled $show={true}>
         <h3>Váše nezávazná poptávka:</h3>
         <div>
-          {inquiryCart.products.length === 0 && <span>Poptávka je prázdná</span>}
-          {inquiryCart.products.map((inquiryProduct: InquiryProductState, index: number) => (
-            <React.Fragment key={index}>
-              {inquiryProduct.variants.map((inquiryVariant: InquiryProductVariantState, variantIndex: number) => inquiryVariant.amount > 0 && (
-                <HeaderInquiryProducts key={variantIndex} product={inquiryProduct} variantIndex={variantIndex} inquiry />
+          {isMounted && (
+            <>
+              {inquiryCart.products.length === 0 && <span>Poptávka je prázdná</span>}
+              {inquiryCart.products.map((inquiryProduct: InquiryProductState, index: number) => (
+                <React.Fragment key={index}>
+                  {inquiryProduct.variants.map((inquiryVariant: InquiryProductVariantState, variantIndex: number) => inquiryVariant.amount > 0 && (
+                    <HeaderInquiryProducts key={variantIndex} product={inquiryProduct} variantIndex={variantIndex} inquiry />
+                  ))}
+                </React.Fragment>
               ))}
-            </React.Fragment>
-          ))}
+            </>
+          )}
         </div>
       </InquiryContentWrapperStyled>
     </InquiryProductsWrapperStyled>

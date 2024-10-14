@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 export const InquiryFormWrapperStyled = styled.div`
-  & > div {
-    background-color: rgb(var(--background));
-    box-shadow: -4px 4px 25px 0px rgba(var(--foreground), 0.25);
-    margin-left: unset;
-    width: 100%;
+  form {
+    background-color: rgb(var(--background))!important;
+    box-shadow: -4px 4px 25px 0px rgba(var(--foreground), 0.25)!important;
+    margin-left: unset!important;
+    width: 100%!important;
 
     input:not(input[type='checkbox']), textarea {
       background-color: rgba(var(--foreground), .125);

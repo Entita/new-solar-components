@@ -66,7 +66,7 @@ export default function Product({ product }: { product: ProductState } ) {
     }
     dispatch(addProduct(newProduct))
     addToInquiryAnimation(productRef.current)
-  }, [inquiryCart, product, cartProduct])
+  }, [inquiryCart, product, cartProduct, variant])
 
   const setProductAmountInCart = React.useCallback((amount: number) => {
     if (!cartProduct) return
@@ -91,7 +91,7 @@ export default function Product({ product }: { product: ProductState } ) {
 
   return (
     <ProductWrapperStyled>
-      <ProductBgStyled ref={productRef} $url='img/example.png'>
+      <ProductBgStyled ref={productRef} $url={`models/${product.model}/${product.model}.png`}>
         <ProductButtonsWrapperStyled>
           <div>
             {product.variants.length > 1 ? (

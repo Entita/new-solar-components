@@ -17,7 +17,7 @@ export default function RenderModel({ model }: { model: ProductModel }) {
 }
 
 function Model({ model }: { model: ProductModel }) {
-  const { nodes } = useGLTF(`/models/${model}.gltf`)
+  const { nodes } = useGLTF(`/models/${model}/${model}.gltf`)
   const modelAdjustment = React.useMemo(() => adjustments[model], [model, adjustments])
 
   return (
@@ -32,39 +32,50 @@ function Model({ model }: { model: ProductModel }) {
 }
 
 const adjustments: ProductAdjustments = {
-  'drzak_na_falc': {
-    scale: 0.04,
-    position: [-1.5, 0.5, 0.75],
-  },
   'hak': {
     scale: 0.0125,
     position: [0.1, -0.35, -0.8],
   },
-  'M10_hex': {
+  'imbus': {
     scale: 0.05,
     position: [0, -0.1, 1],
   },
-  'M10_valcova': {
+  'hex': {
     scale: 0.05,
     position: [0, -0.1, 1],
   },
-  'M10_valcova_25': {
-    scale: 0.05,
-    position: [0, -0.1, 1],
+  'matice_limec': {
+    scale: 0.075,
   },
-  'M10': {
+  'matice': {
+    scale: 0.075,
+  },
+  't_sroub': {
     scale: 0.05,
     position: [0, -0.1, 0.25],
   },
-  'nut': {
-    scale: 0.075,
-  },
-  'omega': {
+  'stredova_prichytka': {
     scale: 0.04,
     position: [-0.5, -0.8, -0.25],
   },
-  'z': {
+  'krajova_prichytka': {
     scale: 0.03,
     position: [-0.25, -0.55, 0.5],
+  },
+  'vrut': {
+    scale: 0.05,
+    position: [0, -0.1, 0.25],
+  },
+  'kombisroub': {
+    scale: 0.05,
+    position: [0, -0.1, 0.25],
+  },
+  'drzak_na_falc': {
+    scale: 0.04,
+    position: [-1.5, 0.5, 0.75],
+  },
+  'spojka_na_profil': {
+    scale: 0.04,
+    position: [-1.5, 0.5, 0.75],
   },
 }

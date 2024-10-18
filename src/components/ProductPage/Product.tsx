@@ -29,7 +29,7 @@ export default function Product({ product }: { product: ProductState }) {
           index === variant ? { ...productVariant, amount: 1 } : { ...productVariant, amount: 0 }) }
       dispatch(addProduct(newProduct))
     }
-  }, [inquiryCart, product, cartProduct])
+  }, [inquiryCart, product, cartProduct, variant])
 
   const setProductAmountInCart = React.useCallback((amount: number) => {
     if (!cartProduct) return
@@ -56,7 +56,7 @@ export default function Product({ product }: { product: ProductState }) {
     <ProductWrapperStyled>
       {zoomedElement && <Zoom zoomedElement={zoomedElement} setZoomedElement={setZoomedElement} />}
       <ProductTopWrapperStyled>
-        <ProductImageWrapperStyled $url={product.image_url}>
+        <ProductImageWrapperStyled $url={`models/${product.model}/${product.model}.png`}>
           {imageMode === '3d' && <RenderModel model={product.model} />}
           <ProductDimensionalButtonWrapperStyled $2d={imageMode === '2d'} onClick={() => setImageMode(prev => prev === '2d' ? '3d' : '2d')}>
             <span>2D</span>
@@ -98,7 +98,7 @@ export default function Product({ product }: { product: ProductState }) {
         </ProductVariantsWrapperStyled>
         ) : (
           <ProductButtonsWrapperStyled>
-            <button onClick={() => setZoomedElement(`/models/${product.model}_technic.png`)}>Zobrazit technický výkres</button>
+            <button onClick={() => setZoomedElement(`/models/${product.model}/${product.model}_technical_drawing.png`)}>Zobrazit technický výkres</button>
           </ProductButtonsWrapperStyled>
         )}
         <ProductControlsWrapperStyled>
@@ -115,7 +115,7 @@ export default function Product({ product }: { product: ProductState }) {
           )}
           {haveMultipleVariants && (
             <ProductButtonsWrapperStyled>
-              <button onClick={() => setZoomedElement(`/models/${product.model}_technic.png`)}>Zobrazit technický výkres</button>
+              <button onClick={() => setZoomedElement(`/models/${product.model}/${product.model}_technical_drawing.png`)}>Zobrazit technický výkres</button>
             </ProductButtonsWrapperStyled>
           )}
         </ProductControlsWrapperStyled>

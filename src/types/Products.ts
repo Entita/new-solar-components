@@ -1,6 +1,7 @@
+export type ProductsState = ProductState[]
+
 export interface ProductState {
   id: string,
-  image_url: string,
   model: string,
   description: string,
   full_description: string,
@@ -16,5 +17,4 @@ export interface ProductAttributeState {
 export interface ProductVariantState {
   name: string,
   price: number,
-  pdf: string,
 }

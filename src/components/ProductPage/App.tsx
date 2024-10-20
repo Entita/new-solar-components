@@ -9,6 +9,8 @@ import { ExcelPricesType } from '@/types/Excel'
 import { products } from '@/products'
 import { useAppSelector } from '@/lib/hooks/hooks'
 
+export const capitalizeString = (string: string) => string.charAt(0).toUpperCase() + string.slice(1)
+
 export default function App({ productId }: { productId: string}) {
   const [isMounted, setIsMounted] = React.useState(false)
   const excelPrices = useAppSelector(state => state.excelPrices.value) as ExcelPricesType
@@ -24,6 +26,7 @@ export default function App({ productId }: { productId: string}) {
     <AppWrapperStyled>
       {isMounted && (
         <>
+          <title>{`Solar components - ${capitalizeString(productId)}`}</title>
           {product
             ? <Product product={product} />
             : <ProductNotFound />}

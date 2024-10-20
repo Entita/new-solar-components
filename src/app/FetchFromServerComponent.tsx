@@ -8,6 +8,9 @@ import Footer from "@/components/Footer/Footer"
 import PageTransition from "./PageTransition"
 import PageInitialAnimation from "./PageInitialAnimation"
 
+export const fetchCache = 'force-no-store'
+export const dynamic = 'force-dynamic'
+
 export const getExcelData = async () => {
   try {
     const axiosResponse = await axios({

@@ -15,23 +15,25 @@ const htmlInquiry = (products: InquiryCartState['products']) => {
   let index = 0
   products.forEach((product: InquiryProductState) => {
     product.variants.forEach((variant: InquiryProductVariantState, variantIndex: number) => {
-      html += `
+      if (variant.amount > 0) {
+        html += `
         <tr ${index % 2 === 0 ? 'style="border-top: 1px solid black; background-color: #dddddd"' : 'style="border-top: 1px solid black"'}>
-          <td style='padding: 4px 1rem'>
-            <img height="48" width="48" src="www.solar-components.cz/models/${product.id}/${product.id}.png" alt="obrázek ${product.id} ${variantIndex + 1}" />
-          </td>
-          <td style='padding: 4px 1rem'>
-            <span>${variant.name}</span>
-          </td>
-          <td style='padding: 4px 1rem; text-align: center'>
-            <span style="white-space: nowrap">${variant.price} Kč</span>
-          </td>
-          <td style='padding: 4px 1rem; text-align: center'>
-            <span>${variant.amount}x</span>
-          </td>
+        <td style='padding: 4px 1rem'>
+        <img height="48" width="48" src="www.solar-components.cz/models/${product.id}/${product.id}.png" alt="obrázek ${product.id} ${variantIndex + 1}" />
+        </td>
+        <td style='padding: 4px 1rem'>
+        <span>${variant.name}</span>
+        </td>
+        <td style='padding: 4px 1rem; text-align: center'>
+        <span style="white-space: nowrap">${variant.price} Kč</span>
+        </td>
+        <td style='padding: 4px 1rem; text-align: center'>
+        <span>${variant.amount}x</span>
+        </td>
         </tr>
-      `
-      index++
+        `
+        index++
+      }
     })
   })
   return html
@@ -44,7 +46,7 @@ const htmlTemplate = (data: FormState, products: InquiryCartState['products']) =
     <table style='border-collapse: collapse; font-size: clamp(14px, 2.1vw, 21px);'>
       <thead>
         <tr>
-          <td><strong>Obrázek</strong></td>
+          <td />
           <td><strong>Název</strong></td>
           <td><strong>Cena</strong></td>
           <td><strong>Množství</strong></td>

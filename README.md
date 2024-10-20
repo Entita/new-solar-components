@@ -1,6 +1,6 @@
 ### TODO:
-- change metadata for each page
+- fix server caching (sync request)
 - replace texts
-- cookies consent
+- asyncstorage consent
 - add agreement for emailing them
 - add captcha ?

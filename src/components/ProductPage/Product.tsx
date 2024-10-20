@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProductAmountWrapperStyled, ProductAtributeWrapperStyled, ProductBottomWrapperStyled, ProductButtonsWrapperStyled, ProductControlsWrapperStyled, ProductDescriptionWrapperStyled, ProductDimensionalButtonWrapperStyled, ProductImageWrapperStyled, ProductTopWrapperStyled, ProductVariantsWrapperStyled, ProductVariantWrapperStyled, ProductWrapperStyled } from './Product.style'
-import { getPriceRangeFromProduct, maxRestrictionAmount } from '../PruductsPage/Product'
+import { formatPriceFromProduct, getPriceRangeFromProduct, maxRestrictionAmount } from '../PruductsPage/Product'
 import { InquiryCartState, InquiryProductState, InquiryProductVariantState } from '@/types/InquiryCart'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks'
 import { addProduct, editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
@@ -52,6 +52,16 @@ export default function Product({ product }: { product: ProductState }) {
     if (!Number.isNaN(numberFromValue) && numberFromValue >= 0) setProductAmountInCart(numberFromValue)
   }, [])
 
+  const getAttributeBasedOnVariant = (attribute: ProductAttributeState, productVariants: ProductVariantState) => {
+    const productAttributes = productVariants.attributes
+    if (productAttributes) {
+      const findVariantAttribute = productAttributes.find((searchingVariantAttribute: ProductAttributeState) => searchingVariantAttribute.key === attribute.key)
+      if (findVariantAttribute) return findVariantAttribute.value
+      return attribute.value
+    }
+    return attribute.value
+  }
+
   return (
     <ProductWrapperStyled>
       {zoomedElement && <Zoom zoomedElement={zoomedElement} setZoomedElement={setZoomedElement} />}
@@ -62,7 +72,7 @@ export default function Product({ product }: { product: ProductState }) {
             <span>2D</span>
             <span>3D</span>
           </ProductDimensionalButtonWrapperStyled>
-          <ProductPriceStyled>{!haveMultipleVariants ? `${product.variants[variant].price} Kč` : getPriceRangeFromProduct(product)}</ProductPriceStyled>
+          <ProductPriceStyled>{!haveMultipleVariants ? `${formatPriceFromProduct(product.variants[variant].price)} Kč` : getPriceRangeFromProduct(product)}</ProductPriceStyled>
         </ProductImageWrapperStyled>
         <ProductDescriptionWrapperStyled>
           <h1>{product.variants[variant].name}</h1>
@@ -73,7 +83,7 @@ export default function Product({ product }: { product: ProductState }) {
               {product.attributes.map((productAttribute: ProductAttributeState, index: number) => (
                 <li key={index}>
                   <b>{`${productAttribute.key}: `}</b>
-                  {productAttribute.value}
+                  {getAttributeBasedOnVariant(productAttribute, product.variants[variant])}
                 </li>
               ))}
             </ul>
@@ -90,7 +100,7 @@ export default function Product({ product }: { product: ProductState }) {
                 <span>{productVariant.name}</span>
                 <div>
                   <span>{`počet kusů: ${cartProduct?.variants[variantIndex].amount || 0}`}</span>
-                  <span>{`cena za 1 kus: ${product.variants[variantIndex].price} Kč`}</span>
+                  <span>{`cena za 1 kus: ${formatPriceFromProduct(product.variants[variantIndex].price)} Kč`}</span>
                 </div>
               </ProductVariantWrapperStyled>
             ))}

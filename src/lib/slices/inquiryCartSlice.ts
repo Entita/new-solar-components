@@ -22,7 +22,6 @@ const inquiryCartSlice = createSlice({
     refreshCart: (state, action) => {
       const excelPrices = action.payload
       const newMergedProducts = mergeProductsWithExcelPrices(excelPrices, state.products) as InquiryCartState['products']
-      console.log('BLA', newMergedProducts)
       state.products = newMergedProducts
     },
   },

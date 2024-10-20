@@ -3,6 +3,7 @@ import { MapFormFieldWrapperStyled, MapFormNameFieldWrapperStyled, MapFormSendWr
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { FormErrorsState, FormState } from '@/types/Form'
 import axios from 'axios'
+import Link from 'next/link'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const sendForm = React.useCallback(async (data: FormState, { setSubmitting }: { setSubmitting: Function }) => {
@@ -65,7 +66,7 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
               <Field name="agreement" type="checkbox" id='agreement' />
               <ErrorMessage name="agreement" component="div" />
               </div>
-             <label htmlFor='agreement'>Odesláním tohoto  formuláře <u>souhlasím s podmínkami</u> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
+             <label htmlFor='agreement'>Odesláním tohoto  formuláře <Link href='podminky' target='_blank'><u>souhlasím s podmínkami</u></Link> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
            </div>
            <button type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
          </MapFormSendWrapperStyled>

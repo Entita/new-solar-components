@@ -17,4 +17,5 @@ export interface ProductAttributeState {
 export interface ProductVariantState {
   name: string,
   price: number,
+  attributes?: ProductAttributeState[]
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAppDispatch } from '@/lib/hooks/hooks'
 import Trash from '../SVG\'s/Trash'
-import { maxRestrictionAmount } from '../PruductsPage/Product'
+import { formatPriceFromProduct, maxRestrictionAmount } from '../PruductsPage/Product'
 import { InquiryProductPriceWrapperStyled, InquiryProductWrapperStyled } from './HeaderInquiryProducts.style'
 import { editProduct, removeProduct } from '@/lib/slices/inquiryCartSlice'
 import Link from 'next/link'
@@ -44,7 +44,7 @@ export default function HeaderInquiryProducts({ product, variantIndex, inquiry }
           <input onChange={({ target }) => handleAmountInput(target.value)} value={variant.amount} min={0} max={maxRestrictionAmount} />
           <button onClick={() => setProductAmountInCart(variant.amount + 1)}>+</button>
         </InquiryProductPriceWrapperStyled>
-        <span>{inquiry ? 'cena za 1 kus:' : 'cena'} <b>{`${variant.price} Kč`}</b></span>
+        <span>{inquiry ? 'cena za 1 kus:' : 'cena'} <b>{`${formatPriceFromProduct(variant.price)} Kč`}</b></span>
       </div>
     </InquiryProductWrapperStyled>
   )

@@ -4,24 +4,24 @@ import StepsMobile from './StepsMobile'
 
 export const allSteps = [
   {
-    title: 'Kouknete se na naše produkty',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Nullam aliquet vestibulum augue, non dapibus nulla vestibulum sit amet.',
+    title: 'Prozkoumejte naši širokou nabídku produktů',
+    description: 'Na našich webových stránkách máte možnost prohlédnout si rozmanité produkty, které nabízíme. Zaměřujeme se na vysoce kvalitní komponenty pro montáž solárních systémů. Věnujte čas důkladnému zkoumání našich výrobků, abyste našli ty, které nejlépe vyhovují vašim potřebám. Každý produkt je detailně popsán s uvedením technických specifikací, což vám pomůže učinit informované rozhodnutí.',
   },
   {
-    title: 'Zaklikáte si varianty a počet podle dostupnosti',
-    description: 'Lofaads amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Nullam aliquet vestibulum augue, non dapibus nulla vestibulum sit amet.',
+    title: 'Vyberte si varianty a množství',
+    description: 'Jakmile identifikujete produkty, které vás zajímají, jednoduše si zaklikněte požadované varianty a množství podle aktuální dostupnosti. Naše platforma je navržena tak, aby byl výběr rychlý a intuitivní. Nezapomeňte zkontrolovat, zda vybrané varianty splňují vaše požadavky, abychom mohli zpracovat vaši poptávku co nejefektivněji.',
   },
   {
-    title: 'Odešlete poptávací zprávu skrz naše stránky',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Nullam aliquet vestibulum augue, non dapibus nulla vestibulum sit amet.',
+    title: 'Odešlete poptávkovou zprávu',
+    description: 'Po dokončení výběru produktů přejděte k odeslání poptávkové zprávy prostřednictvím našich stránek. Tento krok je klíčový, neboť nám poskytuje informace o vašich preferencích a požadavcích. Ujistěte se, že jste vyplnili všechny potřebné údaje, abychom mohli co nejpřesněji a nejrychleji reagovat na vaši poptávku.',
   },
   {
-    title: 'My připravíme podle Vaší poptávky co nejlepší nabídku',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Nullam aliquet vestibulum augue, non dapibus nulla vestibulum sit amet.',
+    title: 'Příprava individuální nabídky',
+    description: 'Po obdržení vaší poptávky začneme zpracovávat individuální cenovou nabídku, která bude přesně odpovídat vašim požadavkům. Ceny uvedené na webových stránkách slouží pouze jako orientační odhad. Finální cena se bude odvíjet od několika faktorů, jako je objednané množství, historie spolupráce, spolehlivost a další specifické podmínky. Naším cílem je zajistit vám co nejlepší možnou cenu na základě konkrétních detailů vaší poptávky.',
   },
   {
-    title: 'Pokud se vám bude naše nabídka líbit tak odesíláme na vámi určenou adresu',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra nulla. Nullam aliquet vestibulum augue, non dapibus nulla vestibulum sit amet.',
+    title: 'Přijetí nabídky a dodání',
+    description: 'Pokud se vám naše nabídka líbí, stačí ji potvrdit a my se postaráme o zbytek. Vaši objednávku rychle zpracujeme a odešleme na vámi určenou adresu. Důsledně dbáme na to, aby produkty dorazily včas a v perfektním stavu, abyste mohli začít s montáží co nejdříve.',
   },
 ]
 

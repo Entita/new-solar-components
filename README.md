@@ -1,6 +1,4 @@
 ### TODO:
-- fix server caching (sync request)
-- replace texts
 - asyncstorage consent
-- add agreement for emailing them
-- add captcha ?
+- add email template for us
+- change cache settings (vercel)

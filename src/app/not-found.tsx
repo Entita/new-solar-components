@@ -1,6 +1,5 @@
 'use client'
 
-import DarkModeToggle from '@/components/DarkMode/DarkModeToggle'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -27,7 +26,6 @@ export const ErrorWrapperStyled = styled.div`
 export default function NotFound() {
   return (
     <ErrorWrapperStyled>
-      <DarkModeToggle />
       <h2>Stránka nebyla nalezena</h2>
       <p>Nepodařilo se najít požadovaný prostředek</p>
       <Link href="/">Vrátit se do menu</Link>

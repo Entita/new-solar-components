@@ -1,18 +1,19 @@
 export default {
   id: 'kombisroub',
   model: 'kombisroub',
-  description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
-  full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
+  description: 'Flexibilní montážní prvek, který umožňuje rychlou a efektivní instalaci díky kombinované hlavě pro různé typy nářadí.',
+  full_description: 'Kombišroub set s adaptérem je inovativní montážní prvek určený pro efektivní spojení různých konstrukčních materiálů. Tento produkt se vyznačuje šroubem s kombinovanou hlavou, která umožňuje použití jak šroubováku, tak imbusového klíče, což zaručuje rychlou a pohodlnou instalaci. Materiál, obvykle nerezová ocel, zajišťuje vysokou odolnost proti korozi a dlouhou životnost.',
   attributes: [
     { key: 'Index', value: '1-126' },
-    { key: 'Rozměry', value: 'Vnější průměr 13 mm, výška 6,5 mm' },
-    { key: 'Materiál', value: 'Nerezová ocel A2 pro vynikající ochranu proti korozi' },
-    { key: 'Pevnost v tahu', value: 'Až 800 MPa' },
+    { key: 'Materiál', value: 'Nerezová ocel A2' },
+    { key: 'Délka', value: '200mm' },
+    { key: 'Průměr', value: 'M8' },
     { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
-    { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
+    { key: 'Aplikace', value: 'Ideální pro montáže v dřevěných konstrukcích, okenních rámcích a střešních systémech' },
+    { key: 'Váha', value: '0,173 kg' },
   ],
   variants: [
-    { name : 'Kombišroub set s adaptérem M10x200', price: 0 },
-    { name : 'Kombišroub set s adaptérem M10x250', price: 0 },
+    { name : 'Kombišroub set s adaptérem M10x200', price: 0, attributes: [{ key: 'Délka', value: '200mm' }, { key: 'Váha', value: '0,173 kg' }] },
+    { name : 'Kombišroub set s adaptérem M10x250', price: 0, attributes: [{ key: 'Délka', value: '250mm' }, { key: 'Váha', value: '0,2 kg' }] },
   ]
 }

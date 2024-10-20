@@ -14,7 +14,7 @@ export default function InquiryProducts() {
   return (
     <InquiryProductsWrapperStyled>
       <InquiryContentWrapperStyled $show={true}>
-        <h3>Váše nezávazná poptávka:</h3>
+        <h3>Vaše nezávazná poptávka:</h3>
         <div>
           {isMounted && (
             <>

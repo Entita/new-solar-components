@@ -1,15 +1,15 @@
 export default {
   id: 'spojka_na_profil',
   model: 'spojka_na_profil',
-  description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
-  full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
+  description: 'Poskytuje rychlé a spolehlivé spojení hliníkových profilů pro různé konstrukční aplikace.',
+  full_description: 'Spojka na profily je efektivní a snadno použitelný prvek určený pro spojování hliníkových profilů, který poskytuje vysokou pevnost a stabilitu při montáži. Tato spojka se často používá v různých konstrukčních a montážních aplikacích, kde je nutné zajistit bezpečné a pevné spojení profilů.',
   attributes: [
     { key: 'Index', value: '1-128' },
-    { key: 'Rozměry', value: 'Vnější průměr 13 mm, výška 6,5 mm' },
-    { key: 'Materiál', value: 'Nerezová ocel A2 pro vynikající ochranu proti korozi' },
-    { key: 'Pevnost v tahu', value: 'Až 800 MPa' },
-    { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
-    { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
+    { key: 'Materiál', value: 'Hliník 6060' },
+    { key: 'Rozměry', value: 'Určeno pro profily 40x45mm' },
+    { key: 'Otvory', value: 'Pro šrouby M10, což zajišťuje snadnou montáž' },
+    { key: 'Aplikace', value: 'Spojka na profily se používá především pro spojování hliníkových konstrukcí v montážních systémech, například při instalaci solárních panelů a dalších rámových konstrukcí' },
+    { key: 'Váha', value: '0,035 kg' },
   ],
   variants: [{ name : 'Spojka na profily', price: 0 }]
 }

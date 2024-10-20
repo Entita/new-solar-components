@@ -11,9 +11,13 @@ export const maxRestrictionAmount = 9999
 
 export const getPriceRangeFromProduct = (product: ProductState) => {
   const prices = [...product.variants.map((variant: ProductVariantState) => variant.price)]
-  const min = Math.min(...prices)
-  const max = Math.max(...prices)
+  const min = String(Math.min(...prices)).replaceAll('.', ',')
+  const max = String(Math.max(...prices)).replaceAll('.', ',')
   return `${min} - ${max} Kč`
+}
+
+export const formatPriceFromProduct = (price: number) => {
+  return String(price).replaceAll('.', ',')
 }
 
 export const addToInquiryAnimation = (productEl: HTMLDivElement | null) => {
@@ -106,7 +110,7 @@ export default function Product({ product }: { product: ProductState } ) {
                         <span>{productVariant.name}</span>
                         <div>
                           <span>{`počet kusů: ${cartVariant?.amount || 0}`}</span>
-                          <span>{`cena za 1 kus: ${productVariant.price} Kč`}</span>
+                          <span>{`cena za 1 kus: ${formatPriceFromProduct(productVariant.price)} Kč`}</span>
                         </div>
                       </ProductVariantWrapperStyled>
                     )
@@ -116,7 +120,7 @@ export default function Product({ product }: { product: ProductState } ) {
                 <ProductVariantsStyled>více variant</ProductVariantsStyled>
               </>
             ) : (
-              <ProductPriceStyled>{`${product.variants[0].price} Kč`}</ProductPriceStyled>
+              <ProductPriceStyled>{`${formatPriceFromProduct(product.variants[0].price)} Kč`}</ProductPriceStyled>
             )}
           </div>
           <ProductBottomButtonsWrapperStyled $show={!!cartProduct}>

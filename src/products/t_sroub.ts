@@ -1,15 +1,15 @@
 export default {
   id: 't_sroub',
   model: 't_sroub',
-  description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
-  full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
+  description: 'Ideální pro efektivní upevnění v solárních systémech a konstrukčních aplikacích.',
+  full_description: 'T šroub M10x25mm je vysoce kvalitní spojovací prvek s plochou hlavou, který se často používá v kombinaci s T-drážkami pro montáž nosných profilů. Tento šroub je vyroben z nerezové oceli A2, což zajišťuje odolnost vůči korozi a mechanickému opotřebení. Díky svému designu je ideální pro aplikace v oblasti solární techniky a konstrukčních systémů.',
   attributes: [
     { key: 'Index', value: '1-122' },
-    { key: 'Rozměry', value: 'Vnější průměr 13 mm, výška 6,5 mm' },
-    { key: 'Materiál', value: 'Nerezová ocel A2 pro vynikající ochranu proti korozi' },
-    { key: 'Pevnost v tahu', value: 'Až 800 MPa' },
-    { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
-    { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
+    { key: 'Materiál', value: 'Nerezová ocel A2 - 1.4301' },
+    { key: 'Průměr', value: '10 mm' },
+    { key: 'Hlava', value: 'Plochá hlava pro snadné uchopení' },
+    { key: 'Aplikace', value: 'Vhodné pro montáž v solárních systémech, upevnění do profilů a konstrukcí' },
+    { key: 'Váha', value: '0,014 kg' },
   ],
   variants: [{ name : 'T šroub M10x25mm', price: 0 }]
 }

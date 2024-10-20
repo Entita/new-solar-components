@@ -1,15 +1,15 @@
 export default {
   id: 'drzak_na_falc',
   model: 'drzak_na_falc',
-  description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
-  full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
+  description: 'Nerezový systém pro snadnou a bezpečnou instalaci solárních panelů na střechy se stojatou drážkou, bez potřeby vrtání do krytiny',
+  full_description: 'Držák na falcovaný plech je klíčovou součástí pro montáž fotovoltaických panelů na plechové střechy se stojatou drážkou (falc). Tento držák se snadno instaluje bez nutnosti vrtání do střechy, což zajišťuje ochranu střešní krytiny před poškozením a zajišťuje dlouhodobou stabilitu solárních panelů.',
   attributes: [
     { key: 'Index', value: '1-127' },
-    { key: 'Rozměry', value: 'Vnější průměr 13 mm, výška 6,5 mm' },
-    { key: 'Materiál', value: 'Nerezová ocel A2 pro vynikající ochranu proti korozi' },
-    { key: 'Pevnost v tahu', value: 'Až 800 MPa' },
-    { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
-    { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
+    { key: 'Materiál', value: 'Nerezová ocel H17 - 1.4016' },
+    { key: 'Rozměry', value: 'Typický držák má rozměry 90x44x44 mm' },
+    { key: 'Upevnění', value: 'Držák se připevňuje ke falcované krytině pomocí dvou šroubů, které jsou součástí dodávky, což zaručuje pevné spojení s minimálním dopadem na střešní plochu' },
+    { key: 'Aplikace', value: 'Ideální pro montáž solárních panelů na střechy s falcovanými plechy, vhodný pro šikmé i rovné střechy' },
+    { key: 'Váha', value: '0,335 kg' },
   ],
   variants: [{ name : 'Držák na falcovaný plech', price: 0 }]
 }

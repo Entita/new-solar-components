@@ -42,7 +42,7 @@ export default function StepsDesktop() {
   }, [allSteps, step])
 
   React.useEffect(() => {
-    const interval = setInterval(() => changeStepToNext(), 3500)
+    const interval = setInterval(() => changeStepToNext(), 5000)
 
     return () => clearInterval(interval)
   }, [])

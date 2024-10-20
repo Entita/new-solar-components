@@ -1,15 +1,15 @@
 export default {
   id: 'matice_limec',
   model: 'matice_limec',
-  description: 'Slouží k upevnění solárního panelu na hlinikový montážní profil.',
-  full_description: 'Matice M8 je ideální volbou pro průmyslové i stavební aplikace. S jejím standardizovaným závitem o průměru 8 mm poskytuje vysokou pevnost a dlouhou životnost při zajištění pevných spojů. Je vyrobena z prémiové nerezové oceli, což zaručuje vynikající odolnost vůči korozi a mechanickému opotřebení, což je zásadní zejména v náročných prostředích.',
+  description: 'Tato límcová matice M10 je navržena pro spolehlivé a bezpečné upevnění v různých aplikacích.',
+  full_description: 'Matice s límcem M10 podle normy DIN 6923 je ideální volbou pro zajištění stabilního a bezpečného spojení v různých průmyslových aplikacích. Díky svému specifickému designu s límcem zajišťuje zvýšenou přilnavost a minimalizuje riziko uvolnění spoje. Vyrobená z nerezové oceli, poskytuje vynikající odolnost proti korozi, což ji činí vhodnou pro použití v náročných prostředích.',
   attributes: [
     { key: 'DIN', value: '6923' },
-    { key: 'Rozměry', value: 'Vnější průměr 13 mm, výška 6,5 mm' },
-    { key: 'Materiál', value: 'Nerezová ocel A2 pro vynikající ochranu proti korozi' },
+    { key: 'Materiál', value: 'Nerezová ocel A2 - 1.4301' },
+    { key: 'Rozměry', value: 'Průměr 10 mm, výška 10 mm, průměr límce 15 mm' },
     { key: 'Pevnost v tahu', value: 'Až 800 MPa' },
-    { key: 'Závit', value: 'M8 s jemným stoupáním pro snadné a bezpečné utažení' },
-    { key: 'Aplikace', value: 'Lze použít ve stavebnictví, automobilovém průmyslu a pro mechanické opravy' },
+    { key: 'Aplikace', value: 'Vhodná pro použití ve stavebnictví, automobilovém průmyslu a dalších mechanických aplikacích, kde je vyžadována vysoká pevnost a trvanlivost' },
+    { key: 'Váha', value: '0,011 kg' },
   ],
   variants: [{ name : 'Matice s límcem M10', price: 0 }]
 }

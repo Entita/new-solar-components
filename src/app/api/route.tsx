@@ -86,7 +86,7 @@ const htmlTemplate = (data: FormState, products: InquiryCartState['products']) =
 const sendMail = async(subject: 'dotaz' | 'poptavka', data: FormState, products: InquiryCartState['products']) => {
   const mailOptions = {
     from: 'Solar components info@solar-components.cz',
-    to: 'entitak@gmail.com',
+    to: 'info@solar-components.cz',
     subject: subject === 'dotaz' ? 'Nový dotaz' : 'Nová poptávka',
     text: 'Solar Components Poptávka',
     html: htmlTemplate(data, products),

@@ -13,11 +13,13 @@ export const revalidate = 0
 
 export const getExcelData = async () => {
   try {
-    const axiosResponse = await axios({
-      url: 'https://docs.google.com/spreadsheets/d/16VqRzndFajs7D25tLbZYy-eNHpl7_KBersXdkF4LFEE/edit?gid=1650439636#gid=1650439636',
-      responseType: "arraybuffer",
-    })
-    const workbook = XLSX.read(axiosResponse.data)
+    // const axiosResponse = await axios({
+    //   url: 'https://docs.google.com/spreadsheets/d/16VqRzndFajs7D25tLbZYy-eNHpl7_KBersXdkF4LFEE/edit?gid=1650439636#gid=1650439636',
+    //   responseType: "arraybuffer",
+    // })
+    const fetchRequest = await fetch('https://docs.google.com/spreadsheets/d/16VqRzndFajs7D25tLbZYy-eNHpl7_KBersXdkF4LFEE/edit?gid=1650439636#gid=1650439636', { cache: 'no-store' })
+    const fetchResponse = await fetchRequest.arrayBuffer()
+    const workbook = XLSX.read(fetchResponse)
     const worksheets = workbook.SheetNames.map((sheetName: string) => ({
       sheetName,
       data: XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]),

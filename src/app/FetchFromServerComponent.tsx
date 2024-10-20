@@ -8,13 +8,11 @@ import Footer from "@/components/Footer/Footer"
 import PageTransition from "./PageTransition"
 import PageInitialAnimation from "./PageInitialAnimation"
 
-export const fetchCache = 'force-no-store'
-export const dynamic = 'force-dynamic'
-
 export const getExcelData = async () => {
   try {
+    const timestamp = Date.parse(new Date().toString()) // timestamp for vercel to force refresh request, otherwise it would cache consantly
     const axiosResponse = await axios({
-      url: 'https://docs.google.com/spreadsheets/d/16VqRzndFajs7D25tLbZYy-eNHpl7_KBersXdkF4LFEE/edit?gid=1650439636#gid=1650439636',
+      url: `https://docs.google.com/spreadsheets/d/16VqRzndFajs7D25tLbZYy-eNHpl7_KBersXdkF4LFEE/edit?gid=1650439636#gid=1650439636?timestamp=${timestamp}`,
       responseType: "arraybuffer",
     })
     const workbook = XLSX.read(axiosResponse.data)

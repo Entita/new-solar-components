@@ -4,10 +4,14 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { FormErrorsState, FormState } from '@/types/Form'
 import axios from 'axios'
 import Link from 'next/link'
+import { useAppSelector } from '@/lib/hooks/hooks'
+import { InquiryCartState } from '@/types/InquiryCart'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
+  const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
+
   const sendForm = React.useCallback(async (data: FormState, { setSubmitting }: { setSubmitting: Function }) => {
-    await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz' })
+    await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: inquiryCart.products })
       .finally(() => setSubmitting(false))
   }, [])
 

@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from 'next/font/google'
 import "./globals.css";
-import ReduxProvider from "./ReduxProvider";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import PageTransition from "./PageTransition";
-import PageInitialAnimation from "./PageInitialAnimation";
+import FetchFromServerComponent from "./FetchFromServerComponent";
 
 const roboto = Roboto({
   weight: ['300', '400', '700'],
@@ -26,15 +22,9 @@ export default function RootLayout({
   return (
     <html lang="cs">
       <body className={roboto.className}>
-        <ReduxProvider>
-          <PageInitialAnimation>
-            <Header />
-            <PageTransition>
-                {children}
-            </PageTransition>
-            <Footer />
-          </PageInitialAnimation>
-        </ReduxProvider>
+        <FetchFromServerComponent>
+          {children}
+        </FetchFromServerComponent>
       </body>
     </html>
   );

@@ -54,7 +54,7 @@
         {
             "mimeType" : "image/png",
             "name" : "metal_color",
-            "uri" : "metal_color.png"
+            "uri" : "../metal_color.png"
         }
     ],
     "accessors" : [

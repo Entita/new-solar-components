@@ -2,7 +2,12 @@ const state = {
   inquiryCart: {
     products: [],
   },
-  darkMode: 'dark',
+  excelPrices: {
+    value: {}
+  },
+  darkMode: {
+    value: 'darkMode'
+  },
 }
 
 export const testUseAppSelector = (f: Function) => f(state)

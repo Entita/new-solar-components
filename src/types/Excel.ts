@@ -1,3 +1,7 @@
 export interface ExcelPricesType {
-  [key: string]: string
+  [key: string]: number
+}
+
+export interface ExcelPricesSliceType {
+  value: ExcelPricesType
 }

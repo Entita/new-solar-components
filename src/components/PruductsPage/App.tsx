@@ -3,13 +3,12 @@ import React from 'react'
 import { AppWrapperStyled } from '../Homepage/App.style'
 import ProductsTitle from './ProductsTitle'
 import Products from './Products'
-import { ExcelPricesType } from '@/types/Excel'
 
-export default function App({ excelPrices }: { excelPrices: ExcelPricesType }) {
+export default function App() {
   return (
     <AppWrapperStyled>
       <ProductsTitle />
-      <Products excelPrices={excelPrices} />
+      <Products />
     </AppWrapperStyled>
   )
 }

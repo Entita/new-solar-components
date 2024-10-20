@@ -13,6 +13,7 @@ export const getPriceRangeFromProduct = (product: ProductState) => {
   const prices = [...product.variants.map((variant: ProductVariantState) => variant.price)]
   const min = String(Math.min(...prices)).replaceAll('.', ',')
   const max = String(Math.max(...prices)).replaceAll('.', ',')
+  if (min === max) return `${min} Kč`
   return `${min} - ${max} Kč`
 }
 

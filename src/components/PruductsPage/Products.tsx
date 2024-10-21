@@ -28,9 +28,9 @@ export default function Products() {
     <ProductsWrapperStyled>
       {isMounted && (
         <>
-          {productsWithExcelPrices.map((product: ProductState, index: number) => (
+          {productsWithExcelPrices.map((product: ProductState) => (
             <Product
-              key={index}
+              key={product.id}
               product={product}
             />
           ))}

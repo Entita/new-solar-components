@@ -11,7 +11,7 @@ export default function ProductsTitle() {
       </div>
       <ProductsStepsWrapperStyled>
         {allSteps.map((step, stepIndex: number) => (
-          <div>
+          <div key={stepIndex}>
             <ProductsStepNumberWrapperStyled>{stepIndex + 1}</ProductsStepNumberWrapperStyled>
             <span>{step.title}</span>
           </div>

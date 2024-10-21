@@ -4,21 +4,48 @@ import { useGLTF, OrbitControls, Environment } from "@react-three/drei"
 import Loading from './Loading'
 import { ProductAdjustments, ProductModel } from '@/types/Model'
 
+const cssStyle: any = { position: 'absolute', width: 'calc(100% - 3rem)', height: 'calc(100% - 3rem)', backgroundColor: 'rgb(var(--background))' }
+
 export default function RenderModel({ model }: { model: ProductModel }) {
   return (
     <Suspense fallback={<Loading />}>
-      <Canvas style={{ position: 'absolute', width: 'calc(100% - 3rem)', height: 'calc(100% - 3rem)', backgroundColor: 'rgb(var(--background))' }} shadows camera={{ position: [-2, 1, -3.8], fov: 45 }}>
-        <Environment preset='sunset' resolution={256} blur={1} />
-        <Model model={model} />
-        <OrbitControls autoRotate autoRotateSpeed={0.5} maxDistance={5} minDistance={1.5} enableZoom minZoom={.1} maxZoom={2} enablePan={false} />
-      </Canvas>
+      <ModelCheck model={model} />
     </Suspense>
   )
+}
+
+function ModelCheck({ model }: { model: ProductModel }) {
+  const [doesModelExist, setDoesModelExist] = React.useState<boolean | null>(null)
+
+  React.useEffect(() => {
+    var fetchSuccess = false
+    fetch(`/models/${model}/${model}.gltf`, { method: 'HEAD' })
+      .then((res) => {
+        if (res.status === 200 || res.status === 204) {
+          setDoesModelExist(true)
+          fetchSuccess = true
+        }
+      })
+      .finally(() => fetchSuccess === false && setDoesModelExist(false))
+  }, [])
+
+  if (doesModelExist === null) return <></>
+  if (doesModelExist === false) return <span style={{ ...cssStyle, display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', fontSize: 'clamp(21px, 2.4vw, 32px)', color: 'rgba(var(--foreground), .6)' }}>There is no model for this product</span>
+
+  return (
+    <Canvas style={cssStyle} shadows camera={{ position: [-2, 1, -3.8], fov: 45 }}>
+      <Environment preset='sunset' resolution={256} blur={1} />
+      <OrbitControls autoRotate autoRotateSpeed={0.5} maxDistance={5} minDistance={1.5} enableZoom minZoom={.1} maxZoom={2} enablePan={false} />
+      <Model model={model} />
+    </Canvas>
+)
 }
 
 function Model({ model }: { model: ProductModel }) {
   const { nodes } = useGLTF(`/models/${model}/${model}.gltf`)
   const modelAdjustment = React.useMemo(() => adjustments[model], [model, adjustments])
+
+
 
   return (
     <>

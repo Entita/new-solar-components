@@ -107,7 +107,7 @@ export default function Product({ product }: { product: ProductState } ) {
                     const cartVariant = cartProduct?.variants.find((x: InquiryProductVariantState, cartIndex: number) => index === cartIndex)
 
                     return (
-                      <ProductVariantWrapperStyled key={index} $selected={variant === index} onClick={() => setVariant(index)}>
+                      <ProductVariantWrapperStyled key={productVariant.name} $selected={variant === index} onClick={() => setVariant(index)}>
                         <span>{productVariant.name}</span>
                         <div>
                           <span>{`počet kusů: ${cartVariant?.amount || 0}`}</span>

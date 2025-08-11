@@ -1,5 +1,6 @@
 import drzak_na_falc from './drzak_na_falc'
 import hak from './hak'
+import profil from './profil'
 import hex from './hex'
 import imbus from './imbus'
 import kombisroub from './kombisroub'
@@ -12,6 +13,7 @@ import t_sroub from './t_sroub'
 import vrut from './vrut'
 
 export const products = [
+  profil,
   hak,
   imbus,
   hex,

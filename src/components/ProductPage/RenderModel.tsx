@@ -59,6 +59,10 @@ function Model({ model }: { model: ProductModel }) {
 }
 
 const adjustments: ProductAdjustments = {
+  'profil': {
+    scale: 0.0125,
+    position: [-1, 0, 0.25],
+  },
   'hak': {
     scale: 0.0125,
     position: [0.1, -0.35, -0.8],
@@ -79,7 +83,7 @@ const adjustments: ProductAdjustments = {
   },
   't_sroub': {
     scale: 0.05,
-    position: [0, -0.1, 0.25],
+    position: [0, -0.1, 0],
   },
   'stredova_prichytka': {
     scale: 0.04,
@@ -90,19 +94,19 @@ const adjustments: ProductAdjustments = {
     position: [-0.25, -0.55, 0.5],
   },
   'vrut': {
-    scale: 0.05,
-    position: [0, -0.1, 0.25],
+    scale: 0.03,
+    position: [0, 1, 0],
   },
   'kombisroub': {
-    scale: 0.05,
-    position: [0, -0.1, 0.25],
+    scale: 0.02,
+    position: [0, -0.1, 0],
   },
   'drzak_na_falc': {
-    scale: 0.04,
-    position: [-1.5, 0.5, 0.75],
+    scale: 0.02,
+    position: [-1, 0.5, 0],
   },
   'spojka_na_profil': {
-    scale: 0.04,
-    position: [-1.5, 0.5, 0.75],
+    scale: 0.02,
+    position: [-0.5, 0.1, 1.25],
   },
 }

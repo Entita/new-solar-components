@@ -6,7 +6,6 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useAppSelector } from '@/lib/hooks/hooks'
 import { InquiryCartState } from '@/types/InquiryCart'
-import ReactPixel from 'react-facebook-pixel'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
@@ -28,8 +27,11 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
     return errors
   }, [])
 
-  const handleSubmit = React.useCallback(() => {
-    ReactPixel.track('contact')
+  const handleSubmit = React.useCallback(async () => {
+    if (typeof window !== 'undefined') {
+      const ReactPixel = (await import('react-facebook-pixel')).default;
+      ReactPixel.track('Purchase');
+    }
   }, [])
 
   return (

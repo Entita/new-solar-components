@@ -27,10 +27,10 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
     return errors
   }, [])
 
-  const handleSubmit = React.useCallback(async () => {
-    if (typeof window !== 'undefined') {
+  const handleSubmit = React.useCallback(async (isValid: boolean, values: FormState) => {
+    if (typeof window !== 'undefined' && isValid) {
       const ReactPixel = (await import('react-facebook-pixel')).default;
-      ReactPixel.track('Purchase');
+      ReactPixel.track('Purchase', { ...values, products: [...inquiryCart.products] });
     }
   }, [])
 
@@ -41,7 +41,7 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
         validate={formValidation}
         initialValues={{ name: '', surname: '', email: '', phone: '', message: '', agreement: false } as FormState}
       >
-        {({ isSubmitting }: { isSubmitting: boolean }) => (
+        {({ isSubmitting, isValid, values }: { isSubmitting: boolean, isValid: boolean, values: FormState }) => (
          <Form>
          {inquiry && <h2>Formulář k poptávce</h2>}
          <MapFormNameFieldWrapperStyled>
@@ -79,7 +79,7 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
               </div>
              <label htmlFor='agreement'>Odesláním tohoto  formuláře <Link href='podminky' target='_blank'><u>souhlasím s podmínkami</u></Link> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
            </div>
-           <button onClick={handleSubmit} type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
+           <button onClick={() => handleSubmit(isValid, values)} type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
          </MapFormSendWrapperStyled>
        </Form>
        )}

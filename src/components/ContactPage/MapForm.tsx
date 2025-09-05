@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MapFormFieldWrapperStyled, MapFormNameFieldWrapperStyled, MapFormSendWrapperStyled, MapFormWrapperStyled } from './MapForm.style'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { FormErrorsState, FormState } from '@/types/Form'
@@ -9,11 +9,21 @@ import { InquiryCartState } from '@/types/InquiryCart'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
+  const [success, setSuccess] = useState(false)
 
-  const sendForm = React.useCallback(async (data: FormState, { setSubmitting }: { setSubmitting: Function }) => {
-    await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: inquiryCart.products })
-      .finally(() => setSubmitting(false))
-  }, [])
+  const sendForm = React.useCallback(async (data: FormState, { setSubmitting, resetForm }: { setSubmitting: Function, resetForm: Function }) => {
+    try {
+      await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: inquiryCart.products })
+      setSuccess(true)
+      if (typeof window !== 'undefined') {
+        const ReactPixel = (await import('react-facebook-pixel')).default;
+        ReactPixel.track('Purchase', { ...data, products: [...inquiryCart.products] });
+      }
+      resetForm()
+    } finally {
+      setSubmitting(false)
+    }
+  }, [inquiry, inquiryCart.products])
 
   const formValidation = React.useCallback((values: FormState) => {
     const errors: FormErrorsState = {}
@@ -27,13 +37,6 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
     return errors
   }, [])
 
-  const handleSubmit = React.useCallback(async (isValid: boolean, values: FormState) => {
-    if (typeof window !== 'undefined' && isValid) {
-      const ReactPixel = (await import('react-facebook-pixel')).default;
-      ReactPixel.track('Purchase', { ...values, products: [...inquiryCart.products] });
-    }
-  }, [])
-
   return (
     <MapFormWrapperStyled>
       <Formik
@@ -41,7 +44,7 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
         validate={formValidation}
         initialValues={{ name: '', surname: '', email: '', phone: '', message: '', agreement: false } as FormState}
       >
-        {({ isSubmitting, isValid, values }: { isSubmitting: boolean, isValid: boolean, values: FormState }) => (
+        {({ isSubmitting }) => (
          <Form>
          {inquiry && <h2>Formulář k poptávce</h2>}
          <MapFormNameFieldWrapperStyled>
@@ -79,8 +82,11 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
               </div>
              <label htmlFor='agreement'>Odesláním tohoto  formuláře <Link href='podminky' target='_blank'><u>souhlasím s podmínkami</u></Link> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
            </div>
-           <button onClick={() => handleSubmit(isValid, values)} type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
+           <button type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
          </MapFormSendWrapperStyled>
+         {success && (
+            <div style={{ color: 'green', marginBottom: 16 }}>Formulář byl úspěšně odeslán.</div>
+          )}
        </Form>
        )}
       </Formik>

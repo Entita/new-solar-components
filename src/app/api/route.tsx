@@ -103,6 +103,7 @@ export async function POST(req: NextRequest) {
     const success = await sendMail(subject, data, products)
     return NextResponse.json({ success })
   } catch (err) {
+    console.log("TEST", err)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }

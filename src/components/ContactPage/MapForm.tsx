@@ -6,6 +6,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useAppSelector } from '@/lib/hooks/hooks'
 import { InquiryCartState } from '@/types/InquiryCart'
+import ReactPixel from 'react-facebook-pixel'
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
@@ -25,6 +26,10 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
     else if (!values.message) errors.message = '*Povinné'
     else if (!values.agreement) errors.agreement = '*Povinné'
     return errors
+  }, [])
+
+  const handleSubmit = React.useCallback(() => {
+    ReactPixel.track('contact')
   }, [])
 
   return (
@@ -72,7 +77,7 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
               </div>
              <label htmlFor='agreement'>Odesláním tohoto  formuláře <Link href='podminky' target='_blank'><u>souhlasím s podmínkami</u></Link> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
            </div>
-           <button type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
+           <button onClick={handleSubmit} type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
          </MapFormSendWrapperStyled>
        </Form>
        )}

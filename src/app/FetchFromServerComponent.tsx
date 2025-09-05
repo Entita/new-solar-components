@@ -6,6 +6,7 @@ import Header from "@/components/Header/Header"
 import Footer from "@/components/Footer/Footer"
 import PageTransition from "./PageTransition"
 import PageInitialAnimation from "./PageInitialAnimation"
+import FacebookPixelProvider from './FacebookPixel'
 
 export const fetchCache = 'force-no-store'
 export const revalidate = 0
@@ -39,11 +40,13 @@ export default async function FetchFromServerComponent({ children }: { children:
   return (
     <ReduxProvider>
       <PageInitialAnimation excelPrices={excelPrices}>
-        <Header />
-        <PageTransition>
-          {children}
-        </PageTransition>
-        <Footer />
+        <FacebookPixelProvider>
+          <Header />
+          <PageTransition>
+            {children}
+          </PageTransition>
+          <Footer />
+        </FacebookPixelProvider>
       </PageInitialAnimation>
     </ReduxProvider>
   )

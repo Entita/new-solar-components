@@ -5,7 +5,18 @@ import { FormErrorsState, FormState } from '@/types/Form'
 import axios from 'axios'
 import Link from 'next/link'
 import { useAppSelector } from '@/lib/hooks/hooks'
-import { InquiryCartState } from '@/types/InquiryCart'
+import { InquiryCartState, InquiryProductState } from '@/types/InquiryCart'
+
+const getTotalPriceFromProducts = (products: InquiryProductState[]) => {
+  return products.reduce((total, product) => {
+    if (!product.variants) return total;
+    const variantsTotal = product.variants.reduce(
+      (sum: number, variant: any) => sum + (variant.price || 0) * (variant.amount || 0),
+      0
+    );
+    return total + variantsTotal;
+  }, 0);
+}
 
 export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
@@ -13,11 +24,18 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
 
   const sendForm = React.useCallback(async (data: FormState, { setSubmitting, resetForm }: { setSubmitting: Function, resetForm: Function }) => {
     try {
-      await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: inquiryCart.products })
+      const productData = [...inquiryCart.products];
+      const totalPrice = getTotalPriceFromProducts(productData);
+      await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: productData })
       setSuccess(true)
       if (typeof window !== 'undefined') {
+        // Facebook Pixel
         const ReactPixel = (await import('react-facebook-pixel')).default;
-        ReactPixel.track('Purchase', { ...data, products: [...inquiryCart.products] });
+        ReactPixel.track('Purchase', { ...data, products: productData, total: totalPrice });
+
+        // Google Analytics
+        const ReactGA = (await import('react-ga4')).default;
+        ReactGA.event({ action: 'submit_form', category: 'Inquiry', value: totalPrice });
       }
       resetForm()
     } finally {

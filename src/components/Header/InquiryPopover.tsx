@@ -19,7 +19,7 @@ export default function InquiryPopover() {
         (variant.amount > 0 ? 1 : 0) + variantSum, 0) + sum, 0)
 
   return (
-    <InquiryWrapperStyled>
+    <InquiryWrapperStyled id="inquiry">
       <Popover position="bottom" shadow="md" offset={0} radius={16} opened={opened}>
         <Popover.Target>
           <Button onMouseEnter={open} onMouseLeave={close} color='rgb(var(--foreground))' variant='outline' style={{ overflow: 'visible', backgroundColor: 'rgb(var(--background))' }}>

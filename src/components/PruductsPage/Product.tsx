@@ -31,9 +31,12 @@ export const addToInquiryAnimation = (productEl: HTMLDivElement | null) => {
   const centerX = inquiryBounds.left + inquiryBounds.width / 2
   const centerY = inquiryBounds.top + inquiryBounds.height / 2
 
-  const clonedEl = productEl.cloneNode(false)
+  const clonedEl = productEl.cloneNode(false) as HTMLDivElement
   const parentEl = document.createElement('div')
 
+  clonedEl.style.backgroundColor = 'transparent'
+  clonedEl.style.border = 'unset'
+  clonedEl.style.boxShadow = 'unset'
   parentEl.appendChild(clonedEl)
   parentEl.style.position = 'fixed'
   parentEl.style.top = `${productBounds.y}px`

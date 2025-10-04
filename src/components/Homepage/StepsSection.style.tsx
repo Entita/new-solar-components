@@ -90,6 +90,10 @@ export const TimelineContent = styled.div`
     text-align: center;
   }
 
+  & > * {
+    max-width: 520px;
+  }
+
   h3 {
     font-size: 32px;
     font-weight: 600;

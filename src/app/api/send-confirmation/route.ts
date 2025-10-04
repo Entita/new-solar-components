@@ -115,7 +115,7 @@ export async function POST(request: Request) {
     if (!customerEmail) return NextResponse.json({ message: "Customer email not found" }, { status: 400 });
 
     await sendConfirmationEmail(customerEmail, session, line_items);
-    // await sendConfirmationEmail("info@solar-components.cz", session, line_items);
+    await sendConfirmationEmail("info@solar-components.cz", session, line_items);
 
     // Zapiš do metadata, že e-mail byl odeslán
     await stripe.checkout.sessions.update(sessionId, {

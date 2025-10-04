@@ -7,8 +7,8 @@ import MapForm from './MapForm'
 import CopyComponent from './CopyComponent'
 
 const storageCoords = {
-  lat: 50.024100,
-  lng: 15.769420,
+  lat: 50.07193056463231,
+  lng: 16.01237338202638,
 }
 
 const companyCoords = {
@@ -17,7 +17,7 @@ const companyCoords = {
 }
 
 export default React.memo(function Map() {
-  const [mapCenterType, setMapCenterType] = React.useState<'storage' | 'company'>('storage')
+  const [mapCenterType, setMapCenterType] = React.useState<'storage' | 'company'>('company')
   const [map, setMap] = React.useState<any>(null)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -31,10 +31,10 @@ export default React.memo(function Map() {
     const { AdvancedMarkerElement }: any = await google.maps.importLibrary("marker")
     new AdvancedMarkerElement({ position: companyCoords, map, title: 'Company marker' })
     new AdvancedMarkerElement({ position: storageCoords, map, title: 'Storage marker' })
-    const movedCoords = mapCenterType === 'storage' ? storageCoords : companyCoords
-    const newCoords = { lng: movedCoords.lng - 0.00007, lat: movedCoords.lat - 0.00001 }
-    const bounds = new window.google.maps.LatLngBounds(newCoords)
-    map.fitBounds(bounds)
+    // const movedCoords = mapCenterType === 'storage' ? storageCoords : companyCoords
+    // const newCoords = { lng: movedCoords.lng - 0.00007, lat: movedCoords.lat - 0.00001 }
+    // const bounds = new window.google.maps.LatLngBounds(newCoords)
+    // map.fitBounds(bounds)
 
     setMap(map)
   }, [])
@@ -47,10 +47,10 @@ export default React.memo(function Map() {
   React.useEffect(() => {
     if (map) {
       const movedCoords = mapCenterType === 'storage' ? storageCoords : companyCoords
-      const newCoords = { lng: movedCoords.lng - (map.zoom || 0) * 0.000003, lat: movedCoords.lat - (map.zoom || 0) * 0.0000007 }
-      const bounds = new window.google.maps.LatLngBounds(newCoords)
+      const newCoords = { lng: movedCoords.lng - (map.zoom || 0) * 0.007, lat: movedCoords.lat - (map.zoom || 0) * 0.0007 }
+      // const bounds = new window.google.maps.LatLngBounds(newCoords)
       map.panTo(newCoords)
-      map.fitBounds(bounds)
+      // map.fitBounds(bounds)
     }
   }, [map, mapCenterType])
 
@@ -62,6 +62,7 @@ export default React.memo(function Map() {
           minHeight: '800px',
           width: '100%',
         }}
+        zoom={12}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{

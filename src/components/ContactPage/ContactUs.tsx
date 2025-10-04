@@ -18,7 +18,7 @@ export default function ContactUs() {
         <ContactUsRowWrapperStyled>
           <Marker height={24} />
           <span>Adresa skladu:
-            <u>Češkova 889, Zelené Předměstí, 530 02, Pardubice</u>
+            <u>Staroholická 484, 534 01, Holice v Čechách</u>
           </span>
         </ContactUsRowWrapperStyled>
       </div>

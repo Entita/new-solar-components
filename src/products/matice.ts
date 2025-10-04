@@ -10,5 +10,5 @@ export default {
     { key: 'Aplikace', value: 'Vhodná pro montážní a upevňovací systémy, zejména v náročných podmínkách' },
     { key: 'Váha', value: '0,006 kg' },
   ],
-  variants: [{ name : 'Matice čtyřhranná M8', price: 0 }]
+  variants: [{ name : 'Matice čtyřhranná M8', price: 0, priceId: 'price_1SETv9Djh1xV4NtAnP6nWnMM', testPriceId: 'price_1SET1FDjh1xV4NtAroAwCpg5' }]
 }

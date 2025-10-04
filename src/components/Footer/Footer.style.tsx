@@ -4,6 +4,7 @@ export const FooterWrapperStyled = styled.footer`
   display: flex;
   flex-direction: column;
   margin-top: auto;
+  padding: 0 10vw 2.5vh;
 
   & > div {
     display: flex;

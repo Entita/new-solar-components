@@ -3,9 +3,12 @@
 import { useRef } from 'react';
 import { TransitionRouter } from 'next-transition-router';
 import { animate } from 'framer-motion/dom';
+import { usePathname } from 'next/navigation';
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const wrapperRef = useRef<HTMLDivElement>(null!)
+  const pathname = usePathname();
+  const isLanding = pathname === "/" ;
 
   return (
     <TransitionRouter
@@ -25,7 +28,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         );
       }}
     >
-      <div ref={wrapperRef}>{children}</div>
+      <div style={{ padding: isLanding ? '' : 'calc(15vh + 60px) 10vw 2.5vh 10vw' }} ref={wrapperRef}>{children}</div>
     </TransitionRouter>
   );
 }

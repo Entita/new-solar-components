@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { HeaderTextStyled, HeaderWrapperStyled } from './HeaderDesktop.style'
 import Logo from '../SVG\'s/Logo'
-import Inquiry from './Inquiry'
 import BackToProducts from './BackToProducts'
+import InquiryPopover from './InquiryPopover'
 
 export default function HeaderDesktop() {
   const [isOnTop, setIsOnTop] = React.useState<Boolean>(true)
@@ -24,8 +24,8 @@ export default function HeaderDesktop() {
       <Link href='/'><Logo type={isOnTop ? 'dark' : 'light'} /></Link>
       <Link href='/produkty'><HeaderTextStyled $current={pathname === '/produkty'}>Produkty</HeaderTextStyled></Link>
       <Link href='/kontakt'><HeaderTextStyled $current={pathname === '/kontakt'}>Kontakt</HeaderTextStyled></Link>
-      {(pathname === '/poptavka' || pathname.includes('/produkty/')) && <BackToProducts />}
-      {pathname !== '/poptavka' && <Inquiry />}
+      {(pathname === '/kosik' || pathname.includes('/produkty/')) && <BackToProducts />}
+      {pathname !== '/kosik' && !pathname.includes('/produkty/') && <InquiryPopover />}
     </HeaderWrapperStyled>
   )
 }

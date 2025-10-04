@@ -20,7 +20,7 @@ export default function LandingSection() {
       {!isMobile && <BackgroundLogo />}
       <h1>Kvalitní solární komponenty.</h1>
       <p>Dostanete spolupráci, na kterou se můžete opravdu spolehnout, a dodáme jen kvalitní komponenty od prověřených dodavatelů.</p>
-      <Link href='/produkty'>Chci poptat produkty</Link>
+      <Link href='/produkty'>Chci objednat produkty</Link>
     </LandingSectionWrapperStyled>
   )
 }

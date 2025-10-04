@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Ideální pro montáž solárních panelů na střechy s falcovanými plechy, vhodný pro šikmé i rovné střechy' },
     { key: 'Váha', value: '0,335 kg' },
   ],
-  variants: [{ name : 'Držák na falcovaný plech', price: 0 }]
+  variants: [{ name : 'Držák na falcovaný plech', price: 0, priceId: 'price_1SETupDjh1xV4NtACyuPJoXk', testPriceId: 'price_1SET5ADjh1xV4NtAoAt6rPF3' }]
 }

@@ -130,6 +130,7 @@ export const ProductButtonsWrapperStyled = styled.div`
   row-gap: 2rem;
 
   button {
+    height: max-content;
     width: 100%;
     background-color: rgb(var(--foreground));
     color: rgb(var(--background));

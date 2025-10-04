@@ -77,7 +77,10 @@ export const MapChangeTypeWrapperStyled = styled.div<{ $type: 'storage' | 'compa
   position: relative;
   display: flex;
   column-gap: 3rem;
-  color: var(--white-color);
+  color: rgb(var(--foreground), .8);
+  background-color: rgb(var(--background), .5);
+  border: 1px solid rgb(var(--foreground), .6);
+  border-radius: 18px;
   margin-left: auto;
   width: fit-content;
   pointer-events: all;

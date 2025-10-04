@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Vhodné pro montáž v solárních systémech, upevnění do profilů a konstrukcí' },
     { key: 'Váha', value: '0,014 kg' },
   ],
-  variants: [{ name : 'T šroub M10x25mm', price: 0 }]
+  variants: [{ name : 'T šroub M10x25mm', price: 0, priceId: 'price_1SETvhDjh1xV4NtA1TMDJLnT', testPriceId: 'price_1SET1nDjh1xV4NtAu99A7Bm9' }]
 }

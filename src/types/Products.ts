@@ -18,4 +18,6 @@ export interface ProductVariantState {
   name: string,
   price: number,
   attributes?: ProductAttributeState[]
+  priceId: string,
+  testPriceId: string,
 }

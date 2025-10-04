@@ -3,13 +3,13 @@
   --foreground: 23, 23, 23;
   --dark-color: #171717;
   --white-color: #FFFFFF;
+  --main-red: #ff9d9d;
   --main-orange: 246, 176, 71;
   --main-yellow: 246, 208, 71;
 }
 
 html, body {
   max-width: 100vw;
-  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -36,4 +36,13 @@ body.dark-mode {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.mantine-Accordion-control {
+  border-radius: inherit;
+}
+
+.mantine-Drawer-title {
+  font-weight: bold;
+  font-size: 20px;
 }

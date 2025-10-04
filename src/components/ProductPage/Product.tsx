@@ -120,7 +120,7 @@ export default function Product({ product }: { product: ProductState }) {
             </ProductAmountWrapperStyled>
           ) : (
             <ProductAmountWrapperStyled onClick={() => addProductToCart()}>
-              Přidat do poptávky
+              Přidat do košíku
             </ProductAmountWrapperStyled>
           )}
           {haveMultipleVariants && (

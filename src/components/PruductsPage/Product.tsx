@@ -18,7 +18,8 @@ export const getPriceRangeFromProduct = (product: ProductState) => {
 }
 
 export const formatPriceFromProduct = (price: number) => {
-  return String(price).replaceAll('.', ',')
+  return price
+    .toLocaleString('cs-CZ', { minimumFractionDigits: 0 })
 }
 
 export const addToInquiryAnimation = (productEl: HTMLDivElement | null) => {
@@ -127,7 +128,7 @@ export default function Product({ product }: { product: ProductState } ) {
           <ProductBottomButtonsWrapperStyled $show={!!cartProduct}>
             <ProductAddStyled onClick={() => !cartProduct && addProductToCart()}>
               {!cartProduct ? (
-                <span>Přidat do poptávky</span>
+                <span>Přidat do košíku</span>
               ) : (
                 <>
                   <button onClick={() => setProductAmountInCart(cartProduct.variants[variant].amount - 1)}>-</button>

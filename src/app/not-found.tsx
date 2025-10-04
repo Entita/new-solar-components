@@ -8,8 +8,12 @@ export const ErrorWrapperStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - (15vh + 60px) - 175px - 2.5vh - 25vh);
   row-gap: 6px;
+
+  .page-initial-animation {
+    row-gap: unset;
+  }
 
   a, button {
     padding: 4px 6px;

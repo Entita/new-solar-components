@@ -20,6 +20,7 @@ export const BackgroundLogoStyled = styled.div`
   right: -750px;
   animation: ${pulseAnimation} 8s infinite ease;
   z-index: -1;
+  overflow-x: hidden;
 
   &::before {
     position: absolute;

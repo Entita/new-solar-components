@@ -12,7 +12,7 @@ export default {
     { key: 'Váha', value: '0,04 kg' },
   ],
   variants: [
-    { name : 'Středová příchytka (přírodní)', price: 0 },
-    { name : 'Středová příchytka (černá)', price: 0 },
+    { name : 'Středová příchytka (přírodní)', price: 0, priceId: 'price_1SETv6Djh1xV4NtAquZt10Fy', testPriceId: 'price_1SET2MDjh1xV4NtAUF8FIqZR' },
+    { name : 'Středová příchytka (černá)', price: 0, priceId: 'price_1SETv4Djh1xV4NtAR0tvQg4T', testPriceId: 'price_1SET2dDjh1xV4NtABaRBvA8w' },
   ]
 }

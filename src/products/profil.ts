@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Montáž fotovoltaických panelů' },
     { key: 'Váha', value: '2,6 kg/m' },
   ],
-  variants: [{ name: 'PV profil 45x40 mm, 6 m', price: 0 }]
+  variants: [{ name: 'PV profil 45x40 mm, 6 m', price: 0, priceId: 'price_1SE84UDjh1xV4NtAZqFgEKhB', testPriceId: 'price_1SE5kZDjh1xV4NtADQCCBB0Z' }],
 }

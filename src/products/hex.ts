@@ -10,5 +10,5 @@ export default {
     { key: 'Aplikace', value: 'Ideální pro zajištění spojů v ocelových konstrukcích, dřevě a plechových materiálech nebo pro použití v prostředích, která vyžadují odolnost proti rzi' },
     { key: 'Váha', value: '0,014 kg' },
   ],
-  variants: [{ name : 'Šroub s šestihrannou hlavou M8x25mm', price: 0 }]
+  variants: [{ name : 'Šroub s šestihrannou hlavou M8x25mm', price: 0, priceId: 'price_1SETvBDjh1xV4NtA8gZTGLE4', testPriceId: 'price_1SET0LDjh1xV4NtARG9bfZWM' }]
 }

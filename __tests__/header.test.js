@@ -14,7 +14,7 @@ const setWindowToDesktop = () => {
 
 jest.mock("../src/lib/hooks/hooks")
 jest.mock("next/navigation", () => ({
-  usePathname: () => 'http://localhost:3000/poptavka',
+  usePathname: () => 'http://localhost:3000/kosik',
 }))
 
 Object.defineProperty(window, 'matchMedia', {

@@ -13,7 +13,7 @@ export default {
     { key: 'Váha', value: '0,173 kg' },
   ],
   variants: [
-    { name : 'Kombišroub set s adaptérem M10x200', price: 0, attributes: [{ key: 'Délka', value: '200mm' }, { key: 'Váha', value: '0,173 kg' }] },
-    { name : 'Kombišroub set s adaptérem M10x250', price: 0, attributes: [{ key: 'Délka', value: '250mm' }, { key: 'Váha', value: '0,2 kg' }] },
+    { name : 'Kombišroub set s adaptérem M10x200', price: 0, attributes: [{ key: 'Délka', value: '200mm' }, { key: 'Váha', value: '0,173 kg' }], priceId: 'price_1SETusDjh1xV4NtAQHUhJYGx', testPriceId: 'price_1SET4bDjh1xV4NtAq53hPBi4' },
+    { name : 'Kombišroub set s adaptérem M10x250', price: 0, attributes: [{ key: 'Délka', value: '250mm' }, { key: 'Váha', value: '0,2 kg' }], priceId: 'price_1SETurDjh1xV4NtAnBdMREhu', testPriceId: 'price_1SET4pDjh1xV4NtAIO6Zi1e7' },
   ]
 }

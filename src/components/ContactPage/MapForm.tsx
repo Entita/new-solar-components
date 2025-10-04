@@ -6,6 +6,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { useAppSelector } from '@/lib/hooks/hooks'
 import { InquiryCartState, InquiryProductState } from '@/types/InquiryCart'
+import { trackFacebookEvent, trackGoogleEvent } from '@/utils/ReactGA'
 
 const getTotalPriceFromProducts = (products: InquiryProductState[]) => {
   return products.reduce((total, product) => {
@@ -18,7 +19,7 @@ const getTotalPriceFromProducts = (products: InquiryProductState[]) => {
   }, 0);
 }
 
-export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
+export default function MapForm() {
   const inquiryCart = useAppSelector(state => state.inquiryCart) as InquiryCartState
   const [success, setSuccess] = useState(false)
 
@@ -26,22 +27,15 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
     try {
       const productData = [...inquiryCart.products];
       const totalPrice = getTotalPriceFromProducts(productData);
-      await axios.post('/api', { data, subject: inquiry ? 'poptavka' : 'dotaz', products: productData })
+      await axios.post('/api', { data, products: productData })
       setSuccess(true)
-      if (typeof window !== 'undefined') {
-        // Facebook Pixel
-        const ReactPixel = (await import('react-facebook-pixel')).default;
-        ReactPixel.track('Purchase', { ...data, products: productData, total: totalPrice });
-
-        // Google Analytics
-        const ReactGA = (await import('react-ga4')).default;
-        ReactGA.event({ action: 'submit_form', category: 'Inquiry', value: totalPrice });
-      }
+      trackFacebookEvent({ event: 'Purchase', data: { ...data, products: productData, total: totalPrice } });
+      trackGoogleEvent({ action: 'submit_form', category: 'Inquiry', value: totalPrice });
       resetForm()
     } finally {
       setSubmitting(false)
     }
-  }, [inquiry, inquiryCart.products])
+  }, [inquiryCart.products])
 
   const formValidation = React.useCallback((values: FormState) => {
     const errors: FormErrorsState = {}
@@ -64,7 +58,6 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
       >
         {({ isSubmitting }) => (
          <Form>
-         {inquiry && <h2>Formulář k poptávce</h2>}
          <MapFormNameFieldWrapperStyled>
            <MapFormFieldWrapperStyled>
              <span>Jméno<i>*</i></span>
@@ -95,12 +88,12 @@ export default function MapForm({ inquiry = false }: { inquiry?: Boolean }) {
          <MapFormSendWrapperStyled>
            <div>
               <div>
-              <Field name="agreement" type="checkbox" id='agreement' />
-              <ErrorMessage name="agreement" component="div" />
+                <Field name="agreement" type="checkbox" id='agreement' />
+                <ErrorMessage name="agreement" component="div" />
               </div>
              <label htmlFor='agreement'>Odesláním tohoto  formuláře <Link href='podminky' target='_blank'><u>souhlasím s podmínkami</u></Link> a tím, aby mi firma Solar Components odpověděla na dotaz.</label>
            </div>
-           <button type='submit' disabled={isSubmitting}>{inquiry ? 'Odeslat nezávaznou poptávku' : 'Odeslat'}</button>
+           <button type='submit' disabled={isSubmitting}>Odeslat</button>
          </MapFormSendWrapperStyled>
          {success && (
             <div style={{ color: 'green', marginBottom: 16 }}>Formulář byl úspěšně odeslán.</div>

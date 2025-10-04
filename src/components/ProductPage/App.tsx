@@ -1,24 +1,24 @@
 'use client'
 import React from 'react'
 import { AppWrapperStyled } from '../Homepage/App.style'
-import { mergeProductWithExcelPrice } from '../PruductsPage/Products'
+import { mergeProductWithStripePrice } from '../PruductsPage/Products'
 import ProductNotFound from '@/app/produkty/not-found'
 import Product from './Product'
 import { ProductState } from '@/types/Products'
-import { ExcelPricesType } from '@/types/Excel'
 import { products } from '@/products'
 import { useAppSelector } from '@/lib/hooks/hooks'
+import { PricesType } from '@/types/Prices'
 
 export const capitalizeString = (string: string) => string.charAt(0).toUpperCase() + string.slice(1)
 
 export default function App({ productId }: { productId: string}) {
   const [isMounted, setIsMounted] = React.useState(false)
-  const excelPrices = useAppSelector(state => state.excelPrices.value) as ExcelPricesType
+  const prices = useAppSelector(state => state.prices.prices) as PricesType[]
   const product: ProductState | undefined = React.useMemo(() => {
     const product = products.find((product: ProductState) => product.id === productId)
-    if (product && Object.keys(excelPrices).length > 0) return mergeProductWithExcelPrice(excelPrices, product)
+    if (product && prices !== null) return mergeProductWithStripePrice(prices, product)
     return product
-  }, [productId, excelPrices, products])
+  }, [productId, prices, products])
 
   React.useEffect(() => setIsMounted(true), [])
 

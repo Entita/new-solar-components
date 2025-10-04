@@ -12,8 +12,8 @@ export default {
     { key: 'Váha', value: '0,014 kg' },
   ],
   variants: [
-    { name : 'Šroub IMBUS M8x22mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 22 mm, průměr 8 mm' }, { key: 'Váha', value: '0,013 kg' }] },
-    { name : 'Šroub IMBUS M8x25mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 25 mm, průměr 8 mm' }, { key: 'Váha', value: '0,014 kg' }] },
-    { name : 'Šroub IMBUS M8x30mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 30 mm, průměr 8 mm' }, { key: 'Váha', value: '0,016 kg' }] },
+    { name : 'Šroub IMBUS M8x22mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 22 mm, průměr 8 mm' }, { key: 'Váha', value: '0,013 kg' }], priceId: 'price_1SETvGDjh1xV4NtAB5wltfaQ', testPriceId: 'price_1SESz3Djh1xV4NtALNTHhEzA' },
+    { name : 'Šroub IMBUS M8x25mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 25 mm, průměr 8 mm' }, { key: 'Váha', value: '0,014 kg' }], priceId: 'price_1SETvEDjh1xV4NtAU2e2u2JB', testPriceId: 'price_1SESzZDjh1xV4NtAZ609fuwF' },
+    { name : 'Šroub IMBUS M8x30mm', price: 0, attributes: [{ key: 'Rozměry', value: 'Délka 30 mm, průměr 8 mm' }, { key: 'Váha', value: '0,016 kg' }], priceId: 'price_1SETvDDjh1xV4NtAflFQAsVy', testPriceId: 'price_1SESzqDjh1xV4NtAE3NdMvOB' },
   ]
 }

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { DarkModeToggleWrapperStyled } from "../DarkMode/DarkModeToggle.style"
-import { InquiryStyled, InquiryWrapperStyled } from "./Inquiry.style"
 import { HeaderBackToProductsWrapperStyled } from "./BackToProducts.style"
+import { InquiryWrapperStyled } from "./InquiryPopover.style"
 
 export const HeaderTextStyled = styled.span<{ $current: Boolean }>`
   font-weight: ${({ $current }) => $current ? '400' : '300'};
@@ -93,7 +93,7 @@ export const HeaderWrapperStyled = styled.header<{ $isOnTop: Boolean }>`
     }
 
     @media (max-width: 1000px) {
-      ${InquiryStyled}, ${HeaderBackToProductsWrapperStyled} a {
+      ${HeaderBackToProductsWrapperStyled} a {
         font-size: 12px;
         padding: 4px 8px;
       }

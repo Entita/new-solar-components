@@ -12,5 +12,5 @@ export default {
     { key: 'Aplikace', value: 'Používá se pro spojování dřevěných stavebních prvků, desek na bázi dřeva, nábytku a dalších dřevěných konstrukcí' },
     { key: 'Váha', value: '0,03 kg' },
   ],
-  variants: [{ name : 'Vrut do dřeva M6x100', price: 0 }]
+  variants: [{ name : 'Vrut do dřeva M6x100', price: 0, priceId: 'price_1SETuuDjh1xV4NtAMou8uciS', testPriceId: 'price_1SET4CDjh1xV4NtA3gyFhXHm' }]
 }

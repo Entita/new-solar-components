@@ -8,10 +8,10 @@ export const ProductsTitleWrapperStyled = styled.div`
   flex-wrap: wrap;
 
   & > div {
-    width: calc(50% - max(1rem, 2.5vw));
+    width: calc(40% - max(1rem, 2.5vw));
 
     @media (max-width: 820px) {
-      width: 100%;
+      width: 100% !important;
     }
   }
 
@@ -20,6 +20,7 @@ export const ProductsTitleWrapperStyled = styled.div`
     flex-direction: column;
     justify-content: space-around;
     row-gap: 1rem;
+    width: calc(60% - max(1rem, 2.5vw));
 
     h1 {
       font-size: clamp(54px, 4.4vw, 72px);

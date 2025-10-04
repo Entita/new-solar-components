@@ -85,11 +85,11 @@ const htmlTemplate = (data: FormState, products: InquiryCartState['products']) =
   </div>
 `
 
-const sendMail = async(subject: 'dotaz' | 'poptavka', data: FormState, products: InquiryCartState['products']) => {
+const sendMail = async(data: FormState, products: InquiryCartState['products']) => {
   const mailOptions = {
     from: 'Solar components info@solar-components.cz',
     to: 'info@solar-components.cz',
-    subject: subject === 'dotaz' ? 'Nový dotaz' : 'Nová poptávka',
+    subject: 'Nový dotaz',
     text: 'Solar Components Poptávka',
     html: htmlTemplate(data, products),
   }
@@ -98,12 +98,11 @@ const sendMail = async(subject: 'dotaz' | 'poptavka', data: FormState, products:
 }
 
 export async function POST(req: NextRequest) {
-  const { data, subject, products } = await req.json()
+  const { data, products } = await req.json()
   try {
-    const success = await sendMail(subject, data, products)
+    const success = await sendMail(data, products)
     return NextResponse.json({ success })
   } catch (err) {
-    console.log("TEST", err)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }

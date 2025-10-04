@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Vhodná pro použití ve stavebnictví, automobilovém průmyslu a dalších mechanických aplikacích, kde je vyžadována vysoká pevnost a trvanlivost' },
     { key: 'Váha', value: '0,011 kg' },
   ],
-  variants: [{ name : 'Matice s límcem M10', price: 0 }]
+  variants: [{ name : 'Matice s límcem M10', price: 0, priceId: 'price_1SETvpDjh1xV4NtAjIObBLND', testPriceId: 'price_1SET0nDjh1xV4NtA9drlS8hf' }]
 }

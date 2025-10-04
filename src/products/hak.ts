@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Vhodné pro střechy pokryté taškami' },
     { key: 'Váha', value: '0,75 kg' },
   ],
-  variants: [{ name : 'Vario hák 120mm', price: 0, }]
+  variants: [{ name : 'Vario hák 120mm', price: 0, priceId: 'price_1SETvIDjh1xV4NtAyQf3sfLP', testPriceId: 'price_1SE9ISDjh1xV4NtAynRb4lg4' }]
 }

@@ -1,19 +1,22 @@
 'use client'
 import { useAppDispatch } from "@/lib/hooks/hooks";
-import { setExcelPrices } from "@/lib/slices/excelPricesSlice";
 import { refreshCart } from "@/lib/slices/inquiryCartSlice";
-import { ExcelPricesType } from "@/types/Excel";
+import { setPrices } from "@/lib/slices/pricesSlice";
+import { PricesType } from "@/types/Prices";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function PageInitialAnimation({ children, excelPrices }: { children: React.ReactNode, excelPrices: ExcelPricesType }) {
+export default function PageInitialAnimation({ children, pricesList }: { children: React.ReactNode, pricesList: PricesType[] }) {
   const dispatch = useAppDispatch()
-  dispatch(setExcelPrices(excelPrices))
-  dispatch(refreshCart(excelPrices))
+
+  useEffect(() => {
+    dispatch(setPrices(pricesList));
+    dispatch(refreshCart(pricesList));
+  }, [dispatch, pricesList]);
 
   return (
     <motion.div
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', rowGap: '25vh', padding: 'calc(15vh + 60px) 10vw 2.5vh 10vw' }}
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', rowGap: '25vh' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ ease: 'easeInOut', duration: 1 }}

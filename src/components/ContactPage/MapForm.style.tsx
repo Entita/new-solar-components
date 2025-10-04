@@ -5,8 +5,9 @@ export const MapFormWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: min(2rem, 2vw);
-    background-color: #717171;
-    color: var(--white-color);
+    background-color: rgb(var(--background));
+    filter: saturate(.8);
+    color: rgb(var(--foreground));
     height: 100%;
     width: calc(100% - 5vw);
     margin-left: auto;
@@ -35,6 +36,7 @@ export const MapFormFieldWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 6px;
+  position: relative;
 
   span {
     font-size: 16px;
@@ -50,7 +52,7 @@ export const MapFormFieldWrapperStyled = styled.div`
   input, textarea {
     padding: 14px 8px;
     border-radius: 8px;
-    background-color: rgba(var(--background), .5);
+    background-color: rgba(var(--foreground), .2);
     font-size: 16px;
     border: unset;
   }
@@ -61,7 +63,12 @@ export const MapFormFieldWrapperStyled = styled.div`
   }
 
   div {
-    color: #ff9d9d;
+    color: var(--main-red);
+  }
+
+  div:last-child {
+    position: absolute;
+    bottom: -24px;
   }
 `
 
@@ -106,7 +113,13 @@ export const MapFormSendWrapperStyled = styled.div`
   }
 
   & > div > div {
-    color: #ff9d9d;
+    position: relative;
+    color: var(--main-red);
+
+    div {
+      position: absolute;
+      bottom: -24px;
+    }
   }
 
   label, input {
@@ -114,7 +127,7 @@ export const MapFormSendWrapperStyled = styled.div`
   }
 
   label {
-    color: var(--dark-color);
+    color: rgb(var(--foreground));
     user-select: none;
 
     u {
@@ -124,6 +137,6 @@ export const MapFormSendWrapperStyled = styled.div`
 
   input:checked {
     background-color: rgb(var(--main-orange));
-    box-shadow: inset 0px 0px 0px 3px #717171;
+    box-shadow: inset 0px 0px 0px 3px rgb(var(--background));
   }
 `

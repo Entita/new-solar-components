@@ -1,49 +1,75 @@
-import React from 'react'
-import StepsDesktop from './StepsDesktop'
-import StepsMobile from './StepsMobile'
+"use client";
 
-export const allSteps = [
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Package, Hammer, Truck, CheckCircle } from "lucide-react";
+import {
+  TimelineWrapper,
+  TimelineLine,
+  TimelineItem,
+  TimelineContent,
+  TimelineIconWrapper,
+  TimelineTitleWrapper,
+} from "./StepsSection.style";
+
+export const steps = [
   {
-    title: 'Prozkoumejte naši širokou nabídku produktů',
-    description: 'Na našich webových stránkách máte možnost prohlédnout si rozmanité produkty, které nabízíme. Zaměřujeme se na vysoce kvalitní komponenty pro montáž solárních systémů. Věnujte čas důkladnému zkoumání našich výrobků, abyste našli ty, které nejlépe vyhovují vašim potřebám. Každý produkt je detailně popsán s uvedením technických specifikací, což vám pomůže učinit informované rozhodnutí.',
+    icon: Package,
+    title: "Vyberte si produkty",
+    text: "Projděte naši nabídku a vyberte komponenty, které potřebujete – od profilů až po spojovací materiál.",
   },
   {
-    title: 'Vyberte si varianty a množství',
-    description: 'Jakmile identifikujete produkty, které vás zajímají, jednoduše si zaklikněte požadované varianty a množství podle aktuální dostupnosti. Naše platforma je navržena tak, aby byl výběr rychlý a intuitivní. Nezapomeňte zkontrolovat, zda vybrané varianty splňují vaše požadavky, abychom mohli zpracovat vaši poptávku co nejefektivněji.',
+    icon: Hammer,
+    title: "Přidejte do košíku",
+    text: "Jakmile máte vybráno, přidejte produkty do košíku a přejděte k vyplnění objednávky.",
   },
   {
-    title: 'Odešlete poptávkovou zprávu',
-    description: 'Po dokončení výběru produktů přejděte k odeslání poptávkové zprávy prostřednictvím našich stránek. Tento krok je klíčový, neboť nám poskytuje informace o vašich preferencích a požadavcích. Ujistěte se, že jste vyplnili všechny potřebné údaje, abychom mohli co nejpřesněji a nejrychleji reagovat na vaši poptávku.',
+    icon: Truck,
+    title: "Zvolte dopravu a dokončete objednávku",
+    text: "Vyplňte dodací údaje, vyberte způsob dopravy a platby. Po potvrzení objednávky vám přijde e-mail s rekapitulací.",
   },
   {
-    title: 'Příprava individuální nabídky',
-    description: 'Po obdržení vaší poptávky začneme zpracovávat individuální cenovou nabídku, která bude přesně odpovídat vašim požadavkům. Ceny uvedené na webových stránkách slouží pouze jako orientační odhad. Finální cena se bude odvíjet od několika faktorů, jako je objednané množství, historie spolupráce, spolehlivost a další specifické podmínky. Naším cílem je zajistit vám co nejlepší možnou cenu na základě konkrétních detailů vaší poptávky.',
+    icon: CheckCircle,
+    title: "Odesíláme a doručujeme",
+    text: "Zboží pečlivě zabalíme, odešleme a doručíme co nejdříve. Stačí rozbalit a pustit se do montáže.",
   },
-  {
-    title: 'Přijetí nabídky a dodání',
-    description: 'Pokud se vám naše nabídka líbí, stačí ji potvrdit a my se postaráme o zbytek. Vaši objednávku rychle zpracujeme a odešleme na vámi určenou adresu. Důsledně dbáme na to, aby produkty dorazily včas a v perfektním stavu, abyste mohli začít s montáží co nejdříve.',
-  },
-]
+];
 
 export default function StepsSection() {
-  const [isMobile, setIsMobile] = React.useState<Boolean | null>(null)
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
-  const isDeviceMobile = React.useCallback(() => setIsMobile(window.innerWidth < 900), [])
-
-  React.useEffect(() => {
-    isDeviceMobile()
-    window.addEventListener('resize', isDeviceMobile)
-
-    return () => window.removeEventListener('resize', isDeviceMobile)
-  }, [])
-
-  if (isMobile === null) return <></>
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "120%"]);
 
   return (
-    <>
-      {isMobile
-        ? <StepsMobile />
-        : <StepsDesktop />}
-    </>
-  )
+    <TimelineWrapper ref={ref}>
+      <TimelineLine style={{ height: lineHeight }} />
+
+      {steps.map((step, index) => {
+        const Icon = step.icon;
+
+        return (
+          <TimelineItem key={index}>
+            <TimelineContent
+              as={motion.div}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <TimelineTitleWrapper>
+                <TimelineIconWrapper>
+                  <Icon size={38} />
+                </TimelineIconWrapper>
+                <h3>{step.title}</h3>
+              </TimelineTitleWrapper>
+              <p>{step.text}</p>
+            </TimelineContent>
+          </TimelineItem>
+        );
+      })}
+    </TimelineWrapper>
+  );
 }

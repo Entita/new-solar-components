@@ -11,5 +11,5 @@ export default {
     { key: 'Aplikace', value: 'Spojka na profily se používá především pro spojování hliníkových konstrukcí v montážních systémech, například při instalaci solárních panelů a dalších rámových konstrukcí' },
     { key: 'Váha', value: '0,035 kg' },
   ],
-  variants: [{ name : 'Spojka na profily', price: 0 }]
+  variants: [{ name : 'Spojka na profily', price: 0, priceId: 'price_1SETu7Djh1xV4NtAr9KPY25M', testPriceId: 'price_1SET5RDjh1xV4NtADz6MJQtH' }]
 }

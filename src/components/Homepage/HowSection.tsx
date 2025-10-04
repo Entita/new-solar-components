@@ -36,7 +36,7 @@ export default function HowSection() {
           initial="offscreen"
           whileInView="onscreen"
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, ease: 'easeInOut' }}
           style={{ transformOrigin: 'left top', left: '-40px', width: 'calc(100% + 80px)', position: 'relative', zIndex: '1' }}
           variants={animations}
           onAnimationStart={() => changeZIndex()}
